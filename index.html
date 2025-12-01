@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM4Subs - Project Management for Subcontractors</title>
+    <meta name="description" content="Stop digging through emails and texts. Keep all your project info organized in one place. Built by subcontractors, for subcontractors.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* PM4Subs Style Guide - Dark Modern Theme */
+        :root {
+            --color-bg: #0f172a;
+            --color-surface: #111827;
+            --color-border: #1e293b;
+            --color-accent: #38bdf8;
+            --color-accent-hover: #0ea5e9;
+            --color-text: #e5e7eb;
+            --color-text-muted: #94a3b8;
+            --color-danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 1.5rem;
+            text-align: center;
+            background: var(--color-bg);
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-text);
+        }
+
+        .hero p {
+            color: var(--color-text-muted);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0.5rem auto 2rem;
+        }
+
+        /* Section Base */
+        .section {
+            padding: 4rem 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* Pain Points Section */
+        .pain-points {
+            padding: 4rem 1.5rem;
+            background: var(--color-bg);
+        }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .pain-card {
+            background: var(--color-surface);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            border-left: 4px solid var(--color-danger);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .pain-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .pain-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        .pain-card p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 4rem 1.5rem;
+            background: var(--color-surface);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-bg);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text-muted);
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 4rem 1.5rem;
+            background: var(--color-bg);
+        }
+
+        .screenshots-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            align-items: start;
+        }
+
+        .mobile-column {
+            position: sticky;
+            top: 20px;
+        }
+
+        .desktop-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .screenshot-card {
+            background: var(--color-surface);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .mobile-column .screenshot-card img {
+            max-height: 700px;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .screenshot-caption {
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .screenshot-caption h4 {
+            color: var(--color-text);
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-caption p {
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive - stack on mobile */
+        @media (max-width: 968px) {
+            .screenshots-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-column {
+                position: relative;
+            }
+
+            .mobile-column .screenshot-card img {
+                max-height: 500px;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 1.5rem;
+            text-align: center;
+            background: var(--color-surface);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        /* Primary Button - Pill style with teal accent */
+        .btn-primary,
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 999px;
+            border: none;
+            background: var(--color-accent);
+            color: #0f172a;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover,
+        .cta-button:hover {
+            background: var(--color-accent-hover);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .email-form {
+            background: var(--color-surface);
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.75rem;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: var(--color-text);
+        }
+
+        .email-form h3 {
+            color: var(--color-text);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--color-text-muted);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.875rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background: var(--color-bg);
+            color: var(--color-text);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-accent);
+            color: #0f172a;
+            border: none;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-accent-hover);
+        }
+
+        .form-note {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1.25rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1.25rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            background: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+        }
+
+        footer a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 999;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .floating-cta-button {
+            padding: 1rem 2rem;
+            background: var(--color-accent);
+            color: #0f172a;
+            border: none;
+            border-radius: 999px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .floating-cta-button:hover {
+            background: var(--color-accent-hover);
+            box-shadow: 0 12px 32px rgba(56, 189, 248, 0.4);
+        }
+
+        .floating-cta-button:active {
+            transform: translateY(-1px);
+        }
+
+        /* Pulse animation to draw attention */
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 32px rgba(56, 189, 248, 0.5);
+            }
+        }
+
+        .floating-cta-button {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        /* Adjust size on small screens */
+        @media (max-width: 480px) {
+            .floating-cta-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Hide floating CTA when modal is open */
+        .modal-overlay.show ~ .floating-cta {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .pain-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .email-form {
+                padding: 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .cta-section p {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Generic Card Class */
+        .card {
+            background: var(--color-surface);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        /* Section h2 styling */
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-text);
+        }
+
+        /* Utility Classes */
+        .text-muted {
+            color: var(--color-text-muted);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Gap utilities */
+        .gap-1 { gap: 0.5rem; }
+        .gap-2 { gap: 1rem; }
+        .gap-3 { gap: 1.5rem; }
+        .gap-4 { gap: 2rem; }
+
+        /* Margin utilities */
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .mb-3 { margin-bottom: 1.5rem; }
+        .mb-4 { margin-bottom: 2rem; }
+
+        /* Padding utilities */
+        .p-1 { padding: 0.5rem; }
+        .p-2 { padding: 1rem; }
+        .p-3 { padding: 1.5rem; }
+        .p-4 { padding: 2rem; }
+
+        /* Border radius utilities */
+        .rounded { border-radius: 0.5rem; }
+        .rounded-lg { border-radius: 0.75rem; }
+        .rounded-full { border-radius: 999px; }
+
+        /* Width utilities */
+        .w-full { width: 100%; }
+        .max-w-sm { max-width: 24rem; }
+        .max-w-md { max-width: 28rem; }
+        .max-w-lg { max-width: 32rem; }
+        .max-w-xl { max-width: 36rem; }
+
+        /* Secondary/outline button variant */
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 999px;
+            border: 1px solid var(--color-border);
+            background: transparent;
+            color: var(--color-text);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Link styling */
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--color-accent-hover);
+        }
+
+        /* Focus states for accessibility */
+        button:focus-visible,
+        input:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: var(--color-accent);
+            color: var(--color-bg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">PM4Subs</a>
+            <div class="nav-links">
+                <a href="/products/">Products</a>
+                <a href="/about/">About</a>
+                <button class="btn-primary" onclick="showEmailModal()">Get Early Access</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Simplified -->
+    <section class="hero">
+        <h1>Project Management for Subcontractors. Built by Subcontractors.</h1>
+        <p>Stop digging through emails and texts. Keep all your project info organized in one place.</p>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="pain-points">
+        <div class="container">
+            <h2 class="section-title">Sound Familiar?</h2>
+            <p class="section-subtitle">These are the problems we built PM4Subs to solve</p>
+            
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="pain-icon">📧</span>
+                    <h3>Where did the GC send that RFI?</h3>
+                    <p>Digging through hundreds of emails and text messages trying to find critical project information that you know is buried somewhere.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">📸</span>
+                    <h3>Photos scattered everywhere</h3>
+                    <p>Pictures in your camera roll, texts, emails, WhatsApp. Good luck finding that specific photo from 3 weeks ago when the GC asks for it.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">❓</span>
+                    <h3>What's actually due this week?</h3>
+                    <p>Juggling multiple jobs with different deadlines, submittals, and requirements. It's in your head, not in a system.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">📱</span>
+                    <h3>Field crew needs info NOW</h3>
+                    <p>They're on site and need plans or specs, but you're in a meeting. Can't get them the info they need when they need it most.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">💰</span>
+                    <h3>Tracking change orders is a nightmare</h3>
+                    <p>Lost revenue because you can't remember what extras you did last month. By the time billing comes around, half of it's forgotten.</p>
+                </div>
+
+                <div class="pain-card">
+                    <span class="pain-icon">⏰</span>
+                    <h3>Hours wasted on admin work</h3>
+                    <p>You should be running jobs and managing crews, not hunting for paperwork or recreating information you know you had somewhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">One Place for Everything</h2>
+            <p class="section-subtitle">Built by masons who got tired of the chaos</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>All Your Jobs</h3>
+                    <p>Every project, every detail, organized and accessible from your phone or computer.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📸</span>
+                    <h3>Photo Management</h3>
+                    <p>Upload from the field, find them instantly, organized by job and category.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📝</span>
+                    <h3>Track Everything</h3>
+                    <p>RFIs, submittals, change orders, material orders - all in one system you can actually use.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📐</span>
+                    <h3>Plans & Documents</h3>
+                    <p>Access drawings, specs, and contracts from anywhere, anytime - even offline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">See It in Action</h2>
+            
+            <div class="screenshots-layout">
+                <!-- Mobile Screenshot Column -->
+                <div class="mobile-column">
+                    <div class="screenshot-card">                  
+                        <img src="screenshots/mobile-camera.png" alt="Mobile dashboard with camera button">
+                        <div class="screenshot-caption">
+                            <h4>Mobile-First Design</h4>
+                            <p>Quick camera access. Track tasks on the go.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Screenshots Column -->
+                <div class="desktop-column">
+                    <div class="screenshot-card">
+                        <img src="screenshots/projects-dashboard.png" alt="Active jobs dashboard">
+                        <div class="screenshot-caption">
+                            <h4>Active Jobs Dashboard</h4>
+                            <p>Track all your projects in one place. Filter, search, and sort instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="screenshots/photo-gallery.png" alt="Photo gallery with filters">
+                        <div class="screenshot-caption">
+                            <h4>Organized Photos</h4>
+                            <p>Filter by category, project, or date. GPS tagging included.</p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <img src="screenshots/proposals-dashboard.png" alt="Proposals organized by status">
+                        <div class="screenshot-caption">
+                            <h4>Proposal Tracking</h4>
+                            <p>Kanban view of all proposals. Never lose track of a bid.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Stop Fighting Your Tools</h2>
+            <p>See how PM4Subs makes project management actually work for subcontractors</p>
+            <button class="cta-button" onclick="showEmailModal()">Get Early Access</button>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="emailModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
+        <div class="email-form" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeEmailModal()">&times;</button>
+            <h3>Request Early Access</h3>
+            <form id="waitlistForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="john@company.com">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name (Optional)</label>
+                    <input type="text" id="company" name="company" placeholder="Your Company">
+                </div>
+                <button type="submit" class="submit-btn">Request Access</button>
+                <div id="successMessage" class="success-message">
+                    ✅ Thanks! We'll be in touch soon.
+                </div>
+                <p class="form-note">We'll personally reach out with your invite link</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 PM4Subs. All rights reserved.</p>
+            <p style="margin-top: 10px;">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
+        </div>
+    </footer>
+
+    <!-- Floating CTA Button -->
+    <div class="floating-cta">
+        <button class="floating-cta-button" onclick="showEmailModal()">
+            🚀 Get on the Beta List
+        </button>
+    </div>
+
+    <script>
+        // Show modal when CTA button clicked
+        function showEmailModal() {
+            document.getElementById('emailModal').classList.add('show');
+        }
+
+        // Close modal
+        function closeEmailModal() {
+            document.getElementById('emailModal').classList.remove('show');
+        }
+
+        // Close modal when clicking outside
+        function closeModalOnOverlay(event) {
+            if (event.target.id === 'emailModal') {
+                closeEmailModal();
+            }
+        }
+
+        // Auto-show modal after 10 seconds (optional - uncomment to enable)
+        /*
+        setTimeout(() => {
+            if (!localStorage.getItem('pm4subs_modal_shown')) {
+                showEmailModal();
+                localStorage.setItem('pm4subs_modal_shown', 'true');
+            }
+        }, 10000);
+        */
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            
+            // mailto approach (works immediately)
+            const subject = encodeURIComponent('PM4Subs Early Access Request');
+            const body = encodeURIComponent(
+                `New early access request:\n\n` +
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Company: ${company || 'Not provided'}\n`
+            );
+            
+            window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('waitlistForm').reset();
+            
+            // Close modal after 2 seconds
+            setTimeout(() => {
+                closeEmailModal();
+                document.getElementById('successMessage').style.display = 'none';
+            }, 2000);
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeEmailModal();
+            }
+        });
+    </script>
+</body>
+</html>
