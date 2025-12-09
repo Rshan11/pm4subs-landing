@@ -33,8 +33,35 @@
                 <a href="/about/">About</a>
                 <a href="/" class="btn-primary">Get Early Access</a>
             </div>
+            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Side Panel -->
+    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+    <aside class="side-panel">
+        <nav class="side-panel-nav">
+            <span class="nav-section-title">Navigate</span>
+            <a href="/">Home</a>
+            <a href="/products/">Products</a>
+            <a href="/about/">About</a>
+
+            <span class="nav-section-title">Tools</span>
+            <a href="/spec-analyzer/">Spec Analyzer</a>
+            <a href="/header-tracker/">Header Tracker</a>
+            <a href="/tool-tracker/">Tool Tracker</a>
+
+            <span class="nav-section-title">Legal</span>
+            <a href="/privacy/">Privacy Policy</a>
+        </nav>
+        <div class="side-panel-cta">
+            <a href="/" class="btn-primary">Get Early Access</a>
+        </div>
+    </aside>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -94,9 +121,33 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 PM4Subs. All rights reserved.</p>
+            <p>&copy; 2025 PM4Subs. All rights reserved. | <a href="/privacy/">Privacy Policy</a></p>
             <p class="mt-2">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
         </div>
     </footer>
+
+    <script>
+        function toggleSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            sidePanel.classList.toggle('open');
+            overlay.classList.toggle('show');
+            hamburger.classList.toggle('active');
+            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
+        }
+        function closeSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            sidePanel.classList.remove('open');
+            overlay.classList.remove('show');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidePanel();
+        });
+    </script>
 </body>
 </html>

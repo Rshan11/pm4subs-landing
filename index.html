@@ -3,23 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PM4Subs - Project Management for Subcontractors</title>
-    <meta name="description" content="Stop digging through emails and texts. Keep all your project info organized in one place. Built by subcontractors, for subcontractors.">
+    <title>PM4Subs – Project Management Software for Subcontractors</title>
+    <meta name="description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place instead of chasing emails, texts, and spreadsheets.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://pm4subs.com/">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="PM4Subs - Project Management for Subcontractors">
-    <meta property="og:description" content="Stop digging through emails and texts. Keep all your project info organized in one place. Built by subcontractors, for subcontractors.">
+    <meta property="og:title" content="PM4Subs – Project Management Software for Subcontractors">
+    <meta property="og:description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.">
     <meta property="og:url" content="https://pm4subs.com/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PM4Subs - Project Management for Subcontractors">
-    <meta name="twitter:description" content="Stop digging through emails and texts. Keep all your project info organized in one place. Built by subcontractors, for subcontractors.">
+    <meta name="twitter:title" content="PM4Subs – Project Management Software for Subcontractors">
+    <meta name="twitter:description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.">
     <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://pm4subs.com/#org",
+          "name": "PM4Subs",
+          "url": "https://pm4subs.com/",
+          "description": "Project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.",
+          "logo": "https://pm4subs.com/screenshots/projects-dashboard.png",
+          "founder": "Ryan Shanley",
+          "sameAs": [
+            "https://www.linkedin.com/company/pm4subs"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://pm4subs.com/#app",
+          "name": "PM4Subs",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "offers": {
+            "@type": "Offer",
+            "url": "https://pm4subs.com/",
+            "category": "subscription"
+          },
+          "publisher": {
+            "@id": "https://pm4subs.com/#org"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://pm4subs.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is PM4Subs?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PM4Subs is project management software built specifically for subcontractors. It helps track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is PM4Subs only for masonry contractors?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. PM4Subs works for many trades, including masonry, concrete, framing, drywall, steel, and other subcontractors. It was designed by a masonry subcontractor but the workflows fit most trades."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How is PM4Subs different from Procore or Buildertrend?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Procore and similar systems are built for general contractors and owners and can be heavy and expensive. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can PM4Subs help with specs and submittals?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The Spec Analyzer lets subcontractors upload large spec PDFs and quickly pull out the sections that matter for their trade, including materials, accessories, and submittal requirements."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does PM4Subs replace my accounting software?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. PM4Subs works alongside your accounting system. It organizes jobs, tasks, specs, and field information so billing and job costing are cleaner, but it is not a full accounting platform."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can my foremen use PM4Subs on their phones?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. PM4Subs is mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -726,13 +816,40 @@
                 <a href="/about/">About</a>
                 <button class="btn-primary" onclick="showEmailModal()">Get Early Access</button>
             </div>
+            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero Section - Simplified -->
+    <!-- Side Panel -->
+    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+    <aside class="side-panel">
+        <nav class="side-panel-nav">
+            <span class="nav-section-title">Navigate</span>
+            <a href="/">Home</a>
+            <a href="/products/">Products</a>
+            <a href="/about/">About</a>
+
+            <span class="nav-section-title">Tools</span>
+            <a href="/spec-analyzer/">Spec Analyzer</a>
+            <a href="/header-tracker/">Header Tracker</a>
+            <a href="/tool-tracker/">Tool Tracker</a>
+
+            <span class="nav-section-title">Legal</span>
+            <a href="/privacy/">Privacy Policy</a>
+        </nav>
+        <div class="side-panel-cta">
+            <button class="btn-primary" onclick="showEmailModal(); closeSidePanel();">Get Early Access</button>
+        </div>
+    </aside>
+
+    <!-- Hero Section -->
     <section class="hero">
-        <h1>Project Management for Subcontractors. Built by Subcontractors.</h1>
-        <p>Stop digging through emails and texts. Keep all your project info organized in one place.</p>
+        <h1>Project Management Software Built for Subcontractors</h1>
+        <p>PM4Subs keeps your bids, jobs, specs, field tasks, and tools in one place. No more digging through emails, group texts, and random spreadsheets to figure out where a job is at. It's simple project management software built by a subcontractor, for subcontractors.</p>
     </section>
 
     <!-- Pain Points Section -->
@@ -781,36 +898,90 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
+    <!-- Who PM4Subs Is For -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Who PM4Subs Is For</h2>
+            <p class="section-subtitle">PM4Subs is made for trade contractors who actually do the work: masonry, concrete, framing, drywall, steel, and other subcontractors who are tired of trying to make "GC software" fit their day-to-day. If you run crews, chase change orders, and juggle multiple jobs at once, PM4Subs is built for you.</p>
+        </div>
+    </section>
+
+    <!-- Why Subcontractors Need Their Own System -->
     <section class="solution">
         <div class="container">
-            <h2 class="section-title">One Place for Everything</h2>
+            <h2 class="section-title">Why Subcontractors Need Their Own System</h2>
+            <p class="section-subtitle">Most project management tools are built for general contractors. They're heavy, expensive, and designed around RFIs, drawing logs, and owner meetings. Subcontractors live in a different world: quotes, purchase orders, manpower, tools, small change orders, and keeping foremen on the same page. PM4Subs focuses on what subs actually need instead of burying you in features you'll never use.</p>
+        </div>
+    </section>
+
+    <!-- Everything in One Place Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Everything in One Place</h2>
             <p class="section-subtitle">Built by masons who got tired of the chaos</p>
-            
+
             <div class="feature-grid">
                 <div class="feature-card">
                     <span class="feature-icon">📋</span>
-                    <h3>All Your Jobs</h3>
-                    <p>Every project, every detail, organized and accessible from your phone or computer.</p>
+                    <h3>Bid & Job Tracking</h3>
+                    <p>See what you've bid, what you've won, and what's coming up next. Every project organized and accessible from your phone or computer.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📸</span>
-                    <h3>Photo Management</h3>
-                    <p>Upload from the field, find them instantly, organized by job and category.</p>
+                    <span class="feature-icon">📄</span>
+                    <h3><a href="/spec-analyzer/">Spec Analyzer for Subcontractors</a></h3>
+                    <p>Upload spec PDFs and quickly pull out the sections that matter for your trade, instead of scrolling through 2,000+ pages.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📝</span>
-                    <h3>Track Everything</h3>
-                    <p>RFIs, submittals, change orders, material orders - all in one system you can actually use.</p>
+                    <span class="feature-icon">👷</span>
+                    <h3>Field & Foreman Tasks</h3>
+                    <p>Turn office to-do lists into clear task lists for your foremen, tied to real jobs.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📐</span>
-                    <h3>Plans & Documents</h3>
-                    <p>Access drawings, specs, and contracts from anywhere, anytime - even offline.</p>
+                    <span class="feature-icon">🔧</span>
+                    <h3><a href="/tool-tracker/">Tool & Equipment Tracking</a></h3>
+                    <p>Know which job your tools and rental gear are on so nothing disappears into a jobsite black hole.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How PM4Subs Fits Into Your Day -->
+    <section class="solution">
+        <div class="container">
+            <h2 class="section-title">How PM4Subs Fits Into Your Day</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">1️⃣</span>
+                    <h3>Set Up Your Company and Jobs</h3>
+                    <p>Add a few active projects and the GCs you work for.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">2️⃣</span>
+                    <h3>Upload Specs and Set Tasks</h3>
+                    <p>Drop in spec PDFs, create job checklists, and assign tasks to the office or field.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">3️⃣</span>
+                    <h3>Keep Everything Moving</h3>
+                    <p>Foremen update tasks, the office tracks bids and jobs, and you always know what's going on without asking for another update text.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real-World Example -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Real-World Example</h2>
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.125rem; line-height: 1.8;">
+                    You get invited to bid a new school and the spec book is 2,400 pages. Normally, you scroll for hours, trying not to miss anything in Division 4 or related sections. With PM4Subs, you upload the PDF, let the <a href="/spec-analyzer/">Spec Analyzer</a> pull out the masonry-related content, and build your scope and submittal list faster. Once you win the job, the same project in PM4Subs becomes the place where you track tasks, tools on site, and simple field change orders.
+                </p>
             </div>
         </div>
     </section>
@@ -862,11 +1033,55 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <h2 class="section-title">FAQs</h2>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>What is PM4Subs?</h3>
+                    <p>PM4Subs is project management software built specifically for subcontractors. It helps you track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Is PM4Subs only for masonry contractors?</h3>
+                    <p>No. PM4Subs works for any trade contractor, including masonry, concrete, framing, drywall, steel, and other subs. It was designed by a masonry subcontractor, but the workflows are flexible enough for most trades.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How is PM4Subs different from Procore or Buildertrend?</h3>
+                    <p>Procore and similar systems are built for general contractors and owners. They're powerful, but often too heavy and expensive for subs. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can PM4Subs help with specs and submittals?</h3>
+                    <p>Yes. The <a href="/spec-analyzer/">Spec Analyzer</a> is built for subcontractors who receive huge spec books. You can upload a PDF and quickly pull out the sections that matter for your trade, including materials, accessories, and submittal requirements, so you don't miss scope items.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Does PM4Subs replace my accounting software?</h3>
+                    <p>No. PM4Subs is designed to work alongside your existing accounting system. It helps you organize jobs, tasks, specs, and field information so your accounting and billing are cleaner and easier, but it doesn't try to be a full accounting platform.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Can my foremen use PM4Subs on their phones?</h3>
+                    <p>Yes. PM4Subs is built to be simple and mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>How do I get started?</h3>
+                    <p>Create an account, set up your company, and add a couple of active jobs. From there you can try the core project management tools and decide which modules—like the <a href="/spec-analyzer/">Spec Analyzer</a> or <a href="/tool-tracker/">tool tracking</a>—you want to turn on next.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <h2>Stop Fighting Your Tools</h2>
-            <p>See how PM4Subs makes project management actually work for subcontractors</p>
+            <p>Simple, subcontractor-friendly pricing. No long contracts, no per-feature add-ons, and no surprise "implementation" fees.</p>
             <button class="cta-button" onclick="showEmailModal()">Get Early Access</button>
         </div>
     </section>
@@ -989,8 +1204,32 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeEmailModal();
+                closeSidePanel();
             }
         });
+
+        // Side panel functions
+        function toggleSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+
+            sidePanel.classList.toggle('open');
+            overlay.classList.toggle('show');
+            hamburger.classList.toggle('active');
+            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
+        }
+
+        function closeSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+
+            sidePanel.classList.remove('open');
+            overlay.classList.remove('show');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     </script>
 </body>
 </html>

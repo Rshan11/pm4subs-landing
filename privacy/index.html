@@ -1,95 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | PM4Subs</title>
-  <style>
-    :root {
-      --color-bg: #0f172a;
-      --color-surface: #111827;
-      --color-border: #1e293b;
-      --color-accent: #38bdf8;
-      --color-text: #e5e7eb;
-      --color-text-muted: #94a3b8;
-    }
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-      line-height: 1.6;
-      padding: 40px;
-      max-width: 800px;
-      margin: auto;
-      background: var(--color-bg);
-      color: var(--color-text);
-    }
-    h1, h2 { color: var(--color-text); }
-    h1 { color: var(--color-accent); }
-    a { color: var(--color-accent); }
-    ul { color: var(--color-text-muted); }
-    p { color: var(--color-text-muted); }
-    strong { color: var(--color-text); }
-    footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--color-border); text-align: center; color: var(--color-text-muted); font-size: 0.9em; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | PM4Subs</title>
+    <meta name="description" content="Privacy Policy for PM4Subs project management software. Learn how we collect, use, and protect your information.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://pm4subs.com/privacy/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Privacy Policy | PM4Subs">
+    <meta property="og:description" content="Privacy Policy for PM4Subs project management software.">
+    <meta property="og:url" content="https://pm4subs.com/privacy/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .privacy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .privacy-content h1 {
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
+        }
+        .privacy-content h2 {
+            color: var(--color-text);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+        .privacy-content p {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+        .privacy-content ul {
+            color: var(--color-text-muted);
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+        .privacy-content li {
+            margin-bottom: 0.5rem;
+        }
+        .privacy-content strong {
+            color: var(--color-text);
+        }
+    </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">PM4Subs</a>
+            <div class="nav-links">
+                <a href="/products/">Products</a>
+                <a href="/about/">About</a>
+                <a href="/" class="btn-primary">Get Early Access</a>
+            </div>
+            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 
-<h1>Privacy Policy</h1>
-<p><strong>Last updated:</strong> December 2025</p>
+    <!-- Side Panel -->
+    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+    <aside class="side-panel">
+        <nav class="side-panel-nav">
+            <span class="nav-section-title">Navigate</span>
+            <a href="/">Home</a>
+            <a href="/products/">Products</a>
+            <a href="/about/">About</a>
 
-<p>This Privacy Policy describes how PM4Subs LLC ("we", "us", "our") collects, uses, and protects information provided by users of our applications, including PM4Subs, HeaderTracker, Rentals4Subs, Tools4Subs, and related services (collectively, the "Services").</p>
+            <span class="nav-section-title">Tools</span>
+            <a href="/spec-analyzer/">Spec Analyzer</a>
+            <a href="/header-tracker/">Header Tracker</a>
+            <a href="/tool-tracker/">Tool Tracker</a>
 
-<h2>Information We Collect</h2>
-<p>We may collect the following information:</p>
-<ul>
-  <li>Name and company information</li>
-  <li>Email address</li>
-  <li>Phone number</li>
-  <li>Project data, rental details, and transactional records</li>
-  <li>SMS and notification preferences</li>
-  <li>Device and browser information</li>
-</ul>
+            <span class="nav-section-title">Legal</span>
+            <a href="/privacy/">Privacy Policy</a>
+        </nav>
+        <div class="side-panel-cta">
+            <a href="/" class="btn-primary">Get Early Access</a>
+        </div>
+    </aside>
 
-<h2>How We Use Information</h2>
-<p>We use collected information to:</p>
-<ul>
-  <li>Provide scheduling, rental, and project management services</li>
-  <li>Send SMS notifications related to account activity, scheduling, verification, and important updates</li>
-  <li>Improve our software and customer support</li>
-  <li>Maintain security and prevent fraud</li>
-</ul>
+    <div class="privacy-content">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last updated:</strong> December 2025</p>
 
-<h2>SMS Messaging and Consent</h2>
-<p>By providing a phone number during account creation or rental scheduling, users agree to receive SMS notifications related to Services they have requested. Users may opt out at any time by replying <strong>STOP</strong>. Users may request help by replying <strong>HELP</strong>.</p>
+        <p>This Privacy Policy describes how PM4Subs LLC ("we", "us", "our") collects, uses, and protects information provided by users of our applications, including PM4Subs, HeaderTracker, Rentals4Subs, Tools4Subs, and related services (collectively, the "Services").</p>
 
-<h2>Sharing of Information</h2>
-<p>We do not sell customer information. We may share necessary information with:</p>
-<ul>
-  <li>SMS providers (such as Twilio) for message delivery</li>
-  <li>Payment processors (such as Stripe) if applicable</li>
-  <li>Hosting and database platforms (such as Supabase)</li>
-</ul>
+        <h2>Information We Collect</h2>
+        <p>We may collect the following information:</p>
+        <ul>
+            <li>Name and company information</li>
+            <li>Email address</li>
+            <li>Phone number</li>
+            <li>Project data, rental details, and transactional records</li>
+            <li>SMS and notification preferences</li>
+            <li>Device and browser information</li>
+        </ul>
 
-<h2>Data Security</h2>
-<p>We use industry-standard security practices to protect information, including encryption, authentication, and access control. While we take reasonable steps to protect data, no method of transmission or storage is 100% secure.</p>
+        <h2>How We Use Information</h2>
+        <p>We use collected information to:</p>
+        <ul>
+            <li>Provide scheduling, rental, and project management services</li>
+            <li>Send SMS notifications related to account activity, scheduling, verification, and important updates</li>
+            <li>Improve our software and customer support</li>
+            <li>Maintain security and prevent fraud</li>
+        </ul>
 
-<h2>Cookies and Analytics</h2>
-<p>We may use cookies and analytic tools to improve website functionality and user experience. Cookies can be disabled in browser settings.</p>
+        <h2>SMS Messaging and Consent</h2>
+        <p>By providing a phone number during account creation or rental scheduling, users agree to receive SMS notifications related to Services they have requested. Users may opt out at any time by replying <strong>STOP</strong>. Users may request help by replying <strong>HELP</strong>.</p>
 
-<h2>Children's Privacy</h2>
-<p>Our Services are intended for business users and are not directed at children under 13 years of age.</p>
+        <h2>Sharing of Information</h2>
+        <p>We do not sell customer information. We may share necessary information with:</p>
+        <ul>
+            <li>SMS providers (such as Twilio) for message delivery</li>
+            <li>Payment processors (such as Stripe) if applicable</li>
+            <li>Hosting and database platforms (such as Supabase)</li>
+        </ul>
 
-<h2>Contact Information</h2>
-<p>If you have questions about this Privacy Policy or would like to request data removal, please contact us at:</p>
+        <h2>Data Security</h2>
+        <p>We use industry-standard security practices to protect information, including encryption, authentication, and access control. While we take reasonable steps to protect data, no method of transmission or storage is 100% secure.</p>
 
-<p><strong>Email:</strong> support@pm4subs.com<br>
-<strong>Mailing Address:</strong> PM4Subs LLC, Portland, OR</p>
+        <h2>Cookies and Analytics</h2>
+        <p>We may use cookies and analytic tools to improve website functionality and user experience. Cookies can be disabled in browser settings.</p>
 
-<h2>Changes to This Policy</h2>
-<p>We may update this Privacy Policy from time to time. The updated version will be posted at this URL.</p>
+        <h2>Children's Privacy</h2>
+        <p>Our Services are intended for business users and are not directed at children under 13 years of age.</p>
 
-<footer>
-  © 2025 PM4Subs LLC — All Rights Reserved
-</footer>
+        <h2>Contact Information</h2>
+        <p>If you have questions about this Privacy Policy or would like to request data removal, please contact us at:</p>
+        <p><strong>Email:</strong> support@pm4subs.com<br>
+        <strong>Mailing Address:</strong> PM4Subs LLC, Portland, OR</p>
 
+        <h2>Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. The updated version will be posted at this URL.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PM4Subs. All rights reserved.</p>
+            <p class="mt-2"><a href="/">Back to PM4Subs project management for subcontractors</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            sidePanel.classList.toggle('open');
+            overlay.classList.toggle('show');
+            hamburger.classList.toggle('active');
+            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
+        }
+        function closeSidePanel() {
+            const sidePanel = document.querySelector('.side-panel');
+            const overlay = document.querySelector('.side-panel-overlay');
+            const hamburger = document.querySelector('.hamburger');
+            sidePanel.classList.remove('open');
+            overlay.classList.remove('show');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSidePanel();
+        });
+    </script>
 </body>
 </html>
