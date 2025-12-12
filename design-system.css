@@ -777,25 +777,26 @@ a:hover {
 
 .floating-cta-button {
     padding: 1rem 2rem;
-    background-color: rgb(var(--color-accent));
-    color: rgb(15 23 42);
-    border: none;
+    background-color: rgb(var(--color-accent) / 0.2);
+    color: rgb(var(--color-accent));
+    border: 1px solid rgb(var(--color-accent) / 0.3);
     border-radius: 9999px;
     font-size: 1.125rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgb(var(--color-accent) / 0.3);
+    box-shadow: none;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
-    animation: pulse 2s ease-in-out infinite;
 }
 
 .floating-cta-button:hover {
-    background-color: rgb(var(--color-primary-dark));
-    box-shadow: 0 12px 32px rgb(var(--color-accent) / 0.4);
+    background-color: rgb(var(--color-accent));
+    color: rgb(15 23 42);
+    border-color: rgb(var(--color-accent));
+    box-shadow: 0 8px 24px rgb(var(--color-accent) / 0.3);
 }
 
 @keyframes pulse {
