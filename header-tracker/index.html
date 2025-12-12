@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,16 @@
     <meta name="twitter:description" content="Automatically calculate header sizes, prop counts, couplers, and rental durations. Built specifically for masonry subcontractors.">
     <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
 
-    <link rel="stylesheet" href="../styles.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="../design-system.css">
 </head>
 <body>
     <!-- Navigation -->

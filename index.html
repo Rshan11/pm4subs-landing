@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +20,30 @@
     <meta name="twitter:title" content="PM4Subs – Project Management Software for Subcontractors">
     <meta name="twitter:description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.">
     <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
+                            light: 'rgb(var(--color-primary-light) / <alpha-value>)',
+                            dark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
+                        },
+                        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+                        border: 'rgb(var(--color-border) / <alpha-value>)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="design-system.css">
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -111,700 +135,6 @@
     }
     </script>
 
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* PM4Subs Style Guide - Dark Modern Theme */
-        :root {
-            --color-bg: #0f172a;
-            --color-surface: #111827;
-            --color-border: #1e293b;
-            --color-accent: #38bdf8;
-            --color-accent-hover: #0ea5e9;
-            --color-text: #e5e7eb;
-            --color-text-muted: #94a3b8;
-            --color-danger: #ef4444;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 6rem 1.5rem;
-            text-align: center;
-            background: var(--color-bg);
-        }
-
-        .logo {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-            color: var(--color-accent);
-        }
-
-        .hero h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--color-text);
-        }
-
-        .hero p {
-            color: var(--color-text-muted);
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0.5rem auto 2rem;
-        }
-
-        /* Section Base */
-        .section {
-            padding: 4rem 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.125rem;
-            color: var(--color-text-muted);
-            margin-bottom: 3rem;
-        }
-
-        /* Pain Points Section */
-        .pain-points {
-            padding: 4rem 1.5rem;
-            background: var(--color-bg);
-        }
-
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .pain-card {
-            background: var(--color-surface);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            border: 1px solid var(--color-border);
-            border-left: 4px solid var(--color-danger);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .pain-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-        }
-
-        .pain-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .pain-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--color-text);
-            font-weight: 600;
-        }
-
-        .pain-card p {
-            color: var(--color-text-muted);
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* Solution Section */
-        .solution {
-            padding: 4rem 1.5rem;
-            background: var(--color-surface);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--color-bg);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-            color: var(--color-text);
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--color-text-muted);
-        }
-
-        /* Screenshots Section */
-        .screenshots {
-            padding: 4rem 1.5rem;
-            background: var(--color-bg);
-        }
-
-        .screenshots-layout {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 2rem;
-            margin-top: 2.5rem;
-            align-items: start;
-        }
-
-        .mobile-column {
-            position: sticky;
-            top: 20px;
-        }
-
-        .desktop-column {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .screenshot-card {
-            background: var(--color-surface);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
-        }
-
-        .screenshot-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .screenshot-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .mobile-column .screenshot-card img {
-            max-height: 700px;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .screenshot-caption {
-            padding: 1.25rem;
-            text-align: center;
-        }
-
-        .screenshot-caption h4 {
-            color: var(--color-text);
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .screenshot-caption p {
-            color: var(--color-text-muted);
-            font-size: 0.875rem;
-        }
-
-        /* Responsive - stack on mobile */
-        @media (max-width: 968px) {
-            .screenshots-layout {
-                grid-template-columns: 1fr;
-            }
-
-            .mobile-column {
-                position: relative;
-            }
-
-            .mobile-column .screenshot-card img {
-                max-height: 500px;
-            }
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 5rem 1.5rem;
-            text-align: center;
-            background: var(--color-surface);
-        }
-
-        .cta-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        .cta-section p {
-            font-size: 1.25rem;
-            color: var(--color-text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        /* Primary Button - Pill style with teal accent */
-        .btn-primary,
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.75rem;
-            border-radius: 999px;
-            border: none;
-            background: var(--color-accent);
-            color: #0f172a;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .btn-primary:hover,
-        .cta-button:hover {
-            background: var(--color-accent-hover);
-        }
-
-        /* Modal Overlay */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-overlay.show {
-            display: flex;
-        }
-
-        .email-form {
-            background: var(--color-surface);
-            padding: 2.5rem;
-            border-radius: 0.75rem;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.75rem;
-            color: var(--color-text-muted);
-            cursor: pointer;
-            background: none;
-            border: none;
-            line-height: 1;
-        }
-
-        .close-modal:hover {
-            color: var(--color-text);
-        }
-
-        .email-form h3 {
-            color: var(--color-text);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--color-text-muted);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.875rem;
-            border: 1px solid var(--color-border);
-            border-radius: 0.5rem;
-            font-size: 1rem;
-            background: var(--color-bg);
-            color: var(--color-text);
-            transition: border-color 0.3s;
-        }
-
-        .form-group input::placeholder {
-            color: var(--color-text-muted);
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--color-accent);
-            color: #0f172a;
-            border: none;
-            border-radius: 999px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .submit-btn:hover {
-            background: var(--color-accent-hover);
-        }
-
-        .form-note {
-            text-align: center;
-            color: var(--color-text-muted);
-            font-size: 0.875rem;
-            margin-top: 1rem;
-        }
-
-        .success-message {
-            display: none;
-            background: #10b981;
-            color: white;
-            padding: 1.25rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            margin-top: 1.25rem;
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem 1rem;
-            text-align: center;
-            color: var(--color-text-muted);
-            font-size: 0.9rem;
-            background: var(--color-surface);
-            border-top: 1px solid var(--color-border);
-        }
-
-        footer a {
-            color: var(--color-accent);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Floating CTA Button */
-        .floating-cta {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .floating-cta-button {
-            padding: 1rem 2rem;
-            background: var(--color-accent);
-            color: #0f172a;
-            border: none;
-            border-radius: 999px;
-            font-size: 1.125rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            white-space: nowrap;
-        }
-
-        .floating-cta-button:hover {
-            background: var(--color-accent-hover);
-            box-shadow: 0 12px 32px rgba(56, 189, 248, 0.4);
-        }
-
-        .floating-cta-button:active {
-            transform: translateY(-1px);
-        }
-
-        /* Pulse animation to draw attention */
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
-            }
-            50% {
-                box-shadow: 0 8px 32px rgba(56, 189, 248, 0.5);
-            }
-        }
-
-        .floating-cta-button {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -40%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        /* Adjust size on small screens */
-        @media (max-width: 480px) {
-            .floating-cta-button {
-                padding: 0.875rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
-
-        /* Hide floating CTA when modal is open */
-        .modal-overlay.show ~ .floating-cta {
-            display: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            .section-title {
-                font-size: 1.75rem;
-            }
-
-            .section-subtitle {
-                font-size: 1rem;
-            }
-
-            .pain-grid,
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .email-form {
-                padding: 1.5rem;
-            }
-
-            .cta-section h2 {
-                font-size: 1.75rem;
-            }
-
-            .cta-section p {
-                font-size: 1.125rem;
-            }
-        }
-
-        /* Generic Card Class */
-        .card {
-            background: var(--color-surface);
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-        }
-
-        /* Section h2 styling */
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            color: var(--color-text);
-        }
-
-        /* Utility Classes */
-        .text-muted {
-            color: var(--color-text-muted);
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .flex-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Gap utilities */
-        .gap-1 { gap: 0.5rem; }
-        .gap-2 { gap: 1rem; }
-        .gap-3 { gap: 1.5rem; }
-        .gap-4 { gap: 2rem; }
-
-        /* Margin utilities */
-        .mt-1 { margin-top: 0.5rem; }
-        .mt-2 { margin-top: 1rem; }
-        .mt-3 { margin-top: 1.5rem; }
-        .mt-4 { margin-top: 2rem; }
-        .mb-1 { margin-bottom: 0.5rem; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-3 { margin-bottom: 1.5rem; }
-        .mb-4 { margin-bottom: 2rem; }
-
-        /* Padding utilities */
-        .p-1 { padding: 0.5rem; }
-        .p-2 { padding: 1rem; }
-        .p-3 { padding: 1.5rem; }
-        .p-4 { padding: 2rem; }
-
-        /* Border radius utilities */
-        .rounded { border-radius: 0.5rem; }
-        .rounded-lg { border-radius: 0.75rem; }
-        .rounded-full { border-radius: 999px; }
-
-        /* Width utilities */
-        .w-full { width: 100%; }
-        .max-w-sm { max-width: 24rem; }
-        .max-w-md { max-width: 28rem; }
-        .max-w-lg { max-width: 32rem; }
-        .max-w-xl { max-width: 36rem; }
-
-        /* Secondary/outline button variant */
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.75rem;
-            border-radius: 999px;
-            border: 1px solid var(--color-border);
-            background: transparent;
-            color: var(--color-text);
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--color-accent);
-            color: var(--color-accent);
-        }
-
-        /* Link styling */
-        a {
-            color: var(--color-accent);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        a:hover {
-            color: var(--color-accent-hover);
-        }
-
-        /* Focus states for accessibility */
-        button:focus-visible,
-        input:focus-visible,
-        a:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Selection styling */
-        ::selection {
-            background: var(--color-accent);
-            color: var(--color-bg);
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -848,51 +178,51 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Project Management Software Built for Subcontractors</h1>
-        <p>PM4Subs keeps your bids, jobs, specs, field tasks, and tools in one place. No more digging through emails, group texts, and random spreadsheets to figure out where a job is at. It's simple project management software built by a subcontractor, for subcontractors.</p>
+        <h1 class="hero-title">Project Management Software Built for Subcontractors</h1>
+        <p class="hero-subtitle">PM4Subs keeps your bids, jobs, specs, field tasks, and tools in one place. No more digging through emails, group texts, and random spreadsheets to figure out where a job is at. It's simple project management software built by a subcontractor, for subcontractors.</p>
     </section>
 
     <!-- Pain Points Section -->
-    <section class="pain-points">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">Sound Familiar?</h2>
             <p class="section-subtitle">These are the problems we built PM4Subs to solve</p>
-            
-            <div class="pain-grid">
+
+            <div class="grid-auto">
                 <div class="pain-card">
-                    <span class="pain-icon">📧</span>
-                    <h3>Where did the GC send that RFI?</h3>
-                    <p>Digging through hundreds of emails and text messages trying to find critical project information that you know is buried somewhere.</p>
+                    <span class="icon icon-lg">📧</span>
+                    <h3 class="card-title">Where did the GC send that RFI?</h3>
+                    <p class="card-body">Digging through hundreds of emails and text messages trying to find critical project information that you know is buried somewhere.</p>
                 </div>
 
                 <div class="pain-card">
-                    <span class="pain-icon">📸</span>
-                    <h3>Photos scattered everywhere</h3>
-                    <p>Pictures in your camera roll, texts, emails, WhatsApp. Good luck finding that specific photo from 3 weeks ago when the GC asks for it.</p>
+                    <span class="icon icon-lg">📸</span>
+                    <h3 class="card-title">Photos scattered everywhere</h3>
+                    <p class="card-body">Pictures in your camera roll, texts, emails, WhatsApp. Good luck finding that specific photo from 3 weeks ago when the GC asks for it.</p>
                 </div>
 
                 <div class="pain-card">
-                    <span class="pain-icon">❓</span>
-                    <h3>What's actually due this week?</h3>
-                    <p>Juggling multiple jobs with different deadlines, submittals, and requirements. It's in your head, not in a system.</p>
+                    <span class="icon icon-lg">❓</span>
+                    <h3 class="card-title">What's actually due this week?</h3>
+                    <p class="card-body">Juggling multiple jobs with different deadlines, submittals, and requirements. It's in your head, not in a system.</p>
                 </div>
 
                 <div class="pain-card">
-                    <span class="pain-icon">📱</span>
-                    <h3>Field crew needs info NOW</h3>
-                    <p>They're on site and need plans or specs, but you're in a meeting. Can't get them the info they need when they need it most.</p>
+                    <span class="icon icon-lg">📱</span>
+                    <h3 class="card-title">Field crew needs info NOW</h3>
+                    <p class="card-body">They're on site and need plans or specs, but you're in a meeting. Can't get them the info they need when they need it most.</p>
                 </div>
 
                 <div class="pain-card">
-                    <span class="pain-icon">💰</span>
-                    <h3>Tracking change orders is a nightmare</h3>
-                    <p>Lost revenue because you can't remember what extras you did last month. By the time billing comes around, half of it's forgotten.</p>
+                    <span class="icon icon-lg">💰</span>
+                    <h3 class="card-title">Tracking change orders is a nightmare</h3>
+                    <p class="card-body">Lost revenue because you can't remember what extras you did last month. By the time billing comes around, half of it's forgotten.</p>
                 </div>
 
                 <div class="pain-card">
-                    <span class="pain-icon">⏰</span>
-                    <h3>Hours wasted on admin work</h3>
-                    <p>You should be running jobs and managing crews, not hunting for paperwork or recreating information you know you had somewhere.</p>
+                    <span class="icon icon-lg">⏰</span>
+                    <h3 class="card-title">Hours wasted on admin work</h3>
+                    <p class="card-body">You should be running jobs and managing crews, not hunting for paperwork or recreating information you know you had somewhere.</p>
                 </div>
             </div>
         </div>
@@ -907,7 +237,7 @@
     </section>
 
     <!-- Why Subcontractors Need Their Own System -->
-    <section class="solution">
+    <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">Why Subcontractors Need Their Own System</h2>
             <p class="section-subtitle">Most project management tools are built for general contractors. They're heavy, expensive, and designed around RFIs, drawing logs, and owner meetings. Subcontractors live in a different world: quotes, purchase orders, manpower, tools, small change orders, and keeping foremen on the same page. PM4Subs focuses on what subs actually need instead of burying you in features you'll never use.</p>
@@ -920,55 +250,55 @@
             <h2 class="section-title">Everything in One Place</h2>
             <p class="section-subtitle">Built by masons who got tired of the chaos</p>
 
-            <div class="feature-grid">
+            <div class="grid-auto">
                 <div class="feature-card">
-                    <span class="feature-icon">📋</span>
-                    <h3>Bid & Job Tracking</h3>
-                    <p>See what you've bid, what you've won, and what's coming up next. Every project organized and accessible from your phone or computer.</p>
+                    <span class="icon">📋</span>
+                    <h3 class="card-title">Bid & Job Tracking</h3>
+                    <p class="card-body">See what you've bid, what you've won, and what's coming up next. Every project organized and accessible from your phone or computer.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">📄</span>
-                    <h3><a href="/spec-analyzer/">Spec Analyzer for Subcontractors</a></h3>
-                    <p>Upload spec PDFs and quickly pull out the sections that matter for your trade, instead of scrolling through 2,000+ pages.</p>
+                    <span class="icon">📄</span>
+                    <h3 class="card-title"><a href="/spec-analyzer/">Spec Analyzer for Subcontractors</a></h3>
+                    <p class="card-body">Upload spec PDFs and quickly pull out the sections that matter for your trade, instead of scrolling through 2,000+ pages.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">👷</span>
-                    <h3>Field & Foreman Tasks</h3>
-                    <p>Turn office to-do lists into clear task lists for your foremen, tied to real jobs.</p>
+                    <span class="icon">👷</span>
+                    <h3 class="card-title">Field & Foreman Tasks</h3>
+                    <p class="card-body">Turn office to-do lists into clear task lists for your foremen, tied to real jobs.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">🔧</span>
-                    <h3><a href="/tool-tracker/">Tool & Equipment Tracking</a></h3>
-                    <p>Know which job your tools and rental gear are on so nothing disappears into a jobsite black hole.</p>
+                    <span class="icon">🔧</span>
+                    <h3 class="card-title"><a href="/tool-tracker/">Tool & Equipment Tracking</a></h3>
+                    <p class="card-body">Know which job your tools and rental gear are on so nothing disappears into a jobsite black hole.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How PM4Subs Fits Into Your Day -->
-    <section class="solution">
+    <section class="section section-alt">
         <div class="container">
             <h2 class="section-title">How PM4Subs Fits Into Your Day</h2>
-            <div class="feature-grid">
+            <div class="grid-3">
                 <div class="feature-card">
-                    <span class="feature-icon">1️⃣</span>
-                    <h3>Set Up Your Company and Jobs</h3>
-                    <p>Add a few active projects and the GCs you work for.</p>
+                    <span class="icon">1️⃣</span>
+                    <h3 class="card-title">Set Up Your Company and Jobs</h3>
+                    <p class="card-body">Add a few active projects and the GCs you work for.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">2️⃣</span>
-                    <h3>Upload Specs and Set Tasks</h3>
-                    <p>Drop in spec PDFs, create job checklists, and assign tasks to the office or field.</p>
+                    <span class="icon">2️⃣</span>
+                    <h3 class="card-title">Upload Specs and Set Tasks</h3>
+                    <p class="card-body">Drop in spec PDFs, create job checklists, and assign tasks to the office or field.</p>
                 </div>
 
                 <div class="feature-card">
-                    <span class="feature-icon">3️⃣</span>
-                    <h3>Keep Everything Moving</h3>
-                    <p>Foremen update tasks, the office tracks bids and jobs, and you always know what's going on without asking for another update text.</p>
+                    <span class="icon">3️⃣</span>
+                    <h3 class="card-title">Keep Everything Moving</h3>
+                    <p class="card-body">Foremen update tasks, the office tracks bids and jobs, and you always know what's going on without asking for another update text.</p>
                 </div>
             </div>
         </div>
@@ -1034,44 +364,44 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="section faq-section">
+    <section class="section">
         <div class="container">
             <h2 class="section-title">FAQs</h2>
 
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3>What is PM4Subs?</h3>
-                    <p>PM4Subs is project management software built specifically for subcontractors. It helps you track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work.</p>
+                    <h3 class="faq-question">What is PM4Subs?</h3>
+                    <p class="faq-answer">PM4Subs is project management software built specifically for subcontractors. It helps you track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Is PM4Subs only for masonry contractors?</h3>
-                    <p>No. PM4Subs works for any trade contractor, including masonry, concrete, framing, drywall, steel, and other subs. It was designed by a masonry subcontractor, but the workflows are flexible enough for most trades.</p>
+                    <h3 class="faq-question">Is PM4Subs only for masonry contractors?</h3>
+                    <p class="faq-answer">No. PM4Subs works for any trade contractor, including masonry, concrete, framing, drywall, steel, and other subs. It was designed by a masonry subcontractor, but the workflows are flexible enough for most trades.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How is PM4Subs different from Procore or Buildertrend?</h3>
-                    <p>Procore and similar systems are built for general contractors and owners. They're powerful, but often too heavy and expensive for subs. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff.</p>
+                    <h3 class="faq-question">How is PM4Subs different from Procore or Buildertrend?</h3>
+                    <p class="faq-answer">Procore and similar systems are built for general contractors and owners. They're powerful, but often too heavy and expensive for subs. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Can PM4Subs help with specs and submittals?</h3>
-                    <p>Yes. The <a href="/spec-analyzer/">Spec Analyzer</a> is built for subcontractors who receive huge spec books. You can upload a PDF and quickly pull out the sections that matter for your trade, including materials, accessories, and submittal requirements, so you don't miss scope items.</p>
+                    <h3 class="faq-question">Can PM4Subs help with specs and submittals?</h3>
+                    <p class="faq-answer">Yes. The <a href="/spec-analyzer/">Spec Analyzer</a> is built for subcontractors who receive huge spec books. You can upload a PDF and quickly pull out the sections that matter for your trade, including materials, accessories, and submittal requirements, so you don't miss scope items.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Does PM4Subs replace my accounting software?</h3>
-                    <p>No. PM4Subs is designed to work alongside your existing accounting system. It helps you organize jobs, tasks, specs, and field information so your accounting and billing are cleaner and easier, but it doesn't try to be a full accounting platform.</p>
+                    <h3 class="faq-question">Does PM4Subs replace my accounting software?</h3>
+                    <p class="faq-answer">No. PM4Subs is designed to work alongside your existing accounting system. It helps you organize jobs, tasks, specs, and field information so your accounting and billing are cleaner and easier, but it doesn't try to be a full accounting platform.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>Can my foremen use PM4Subs on their phones?</h3>
-                    <p>Yes. PM4Subs is built to be simple and mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app.</p>
+                    <h3 class="faq-question">Can my foremen use PM4Subs on their phones?</h3>
+                    <p class="faq-answer">Yes. PM4Subs is built to be simple and mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app.</p>
                 </div>
 
                 <div class="faq-item">
-                    <h3>How do I get started?</h3>
-                    <p>Create an account, set up your company, and add a couple of active jobs. From there you can try the core project management tools and decide which modules—like the <a href="/spec-analyzer/">Spec Analyzer</a> or <a href="/tool-tracker/">tool tracking</a>—you want to turn on next.</p>
+                    <h3 class="faq-question">How do I get started?</h3>
+                    <p class="faq-answer">Create an account, set up your company, and add a couple of active jobs. From there you can try the core project management tools and decide which modules—like the <a href="/spec-analyzer/">Spec Analyzer</a> or <a href="/tool-tracker/">tool tracking</a>—you want to turn on next.</p>
                 </div>
             </div>
         </div>
@@ -1080,33 +410,33 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
-            <h2>Stop Fighting Your Tools</h2>
-            <p>Simple, subcontractor-friendly pricing. No long contracts, no per-feature add-ons, and no surprise "implementation" fees.</p>
-            <button class="cta-button" onclick="showEmailModal()">Get Early Access</button>
+            <h2 class="cta-title">Stop Fighting Your Tools</h2>
+            <p class="cta-subtitle">Simple, subcontractor-friendly pricing. No long contracts, no per-feature add-ons, and no surprise "implementation" fees.</p>
+            <button class="btn-primary btn-lg" onclick="showEmailModal()">Get Early Access</button>
         </div>
     </section>
 
     <!-- Modal -->
     <div id="emailModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
-        <div class="email-form" onclick="event.stopPropagation()">
-            <button class="close-modal" onclick="closeEmailModal()">&times;</button>
-            <h3>Request Early Access</h3>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeEmailModal()">&times;</button>
+            <h3 class="modal-title">Request Early Access</h3>
             <form id="waitlistForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required placeholder="John Smith">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input class="form-input" type="text" id="name" name="name" required placeholder="John Smith">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required placeholder="john@company.com">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input class="form-input" type="email" id="email" name="email" required placeholder="john@company.com">
                 </div>
                 <div class="form-group">
-                    <label for="company">Company Name (Optional)</label>
-                    <input type="text" id="company" name="company" placeholder="Your Company">
+                    <label class="form-label" for="company">Company Name (Optional)</label>
+                    <input class="form-input" type="text" id="company" name="company" placeholder="Your Company">
                 </div>
-                <button type="submit" class="submit-btn">Request Access</button>
+                <button type="submit" class="btn-primary w-full">Request Access</button>
                 <div id="successMessage" class="success-message">
-                    ✅ Thanks! We'll be in touch soon.
+                    Thanks! We'll be in touch soon.
                 </div>
                 <p class="form-note">We'll personally reach out with your invite link</p>
             </form>
@@ -1116,7 +446,7 @@
     <!-- Quick Links for SEO -->
     <section class="quick-links-section">
         <div class="container">
-            <h3>Explore PM4Subs Tools</h3>
+            <h3 class="quick-links-title">Explore PM4Subs Tools</h3>
             <nav class="quick-links">
                 <a href="/spec-analyzer/">Spec Analyzer</a>
                 <a href="/header-tracker/">Header Tracker</a>

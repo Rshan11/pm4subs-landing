@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,40 +14,16 @@
     <meta property="og:url" content="https://pm4subs.com/privacy/">
     <meta property="og:type" content="website">
 
-    <link rel="stylesheet" href="../styles.css">
-    <style>
-        .privacy-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
         }
-        .privacy-content h1 {
-            color: var(--color-accent);
-            margin-bottom: 0.5rem;
-        }
-        .privacy-content h2 {
-            color: var(--color-text);
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-            font-size: 1.25rem;
-        }
-        .privacy-content p {
-            color: var(--color-text-muted);
-            margin-bottom: 1rem;
-            line-height: 1.7;
-        }
-        .privacy-content ul {
-            color: var(--color-text-muted);
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-        .privacy-content li {
-            margin-bottom: 0.5rem;
-        }
-        .privacy-content strong {
-            color: var(--color-text);
-        }
-    </style>
+    </script>
+
+    <!-- Design System -->
+    <link rel="stylesheet" href="../design-system.css">
 </head>
 <body>
     <!-- Navigation -->
