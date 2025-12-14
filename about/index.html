@@ -1,162 +1,219 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About PM4Subs | Built by Subcontractors, for Subcontractors</title>
-    <meta name="description" content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pm4subs.com/about/">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            About PM4Subs | Built by Subcontractors, for Subcontractors
+        </title>
+        <meta
+            name="description"
+            content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://pm4subs.com/about/" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="About PM4Subs | Built by Subcontractors, for Subcontractors">
-    <meta property="og:description" content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows.">
-    <meta property="og:url" content="https://pm4subs.com/about/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Open Graph -->
+        <meta
+            property="og:title"
+            content="About PM4Subs | Built by Subcontractors, for Subcontractors"
+        />
+        <meta
+            property="og:description"
+            content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows."
+        />
+        <meta property="og:url" content="https://pm4subs.com/about/" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About PM4Subs | Built by Subcontractors, for Subcontractors">
-    <meta name="twitter:description" content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows.">
-    <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="About PM4Subs | Built by Subcontractors, for Subcontractors"
+        />
+        <meta
+            name="twitter:description"
+            content="PM4Subs was built by a subcontractor who just wanted software that actually works. Simple, affordable, and designed around real field workflows."
+        />
+        <meta
+            name="twitter:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+            };
+        </script>
 
-    <!-- Design System -->
-    <link rel="stylesheet" href="../design-system.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">PM4Subs</a>
-            <div class="nav-links">
+        <!-- Design System -->
+        <link rel="stylesheet" href="../design-system.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">PM4Subs</a>
+                <div class="nav-links">
+                    <a href="/products/">Products</a>
+                    <a href="/tools/">Tools</a>
+                    <a href="/about/">About</a>
+                    <a href="/" class="btn-primary">Get Early Access</a>
+                </div>
+                <button
+                    class="hamburger"
+                    onclick="toggleSidePanel()"
+                    aria-label="Toggle menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Side Panel -->
+        <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+        <aside class="side-panel">
+            <nav class="side-panel-nav">
+                <span class="nav-section-title">Navigate</span>
+                <a href="/">Home</a>
                 <a href="/products/">Products</a>
+                <a href="/tools/">Tools</a>
                 <a href="/about/">About</a>
+
+                <span class="nav-section-title">Free Tools</span>
+                <a href="/image-compressor/">Image Compressor</a>
+                <a href="/spec-analyzer/">Spec Analyzer</a>
+                <a href="/header-tracker/">Header Tracker</a>
+                <a href="/tool-tracker/">Tool Tracker</a>
+
+                <span class="nav-section-title">Legal</span>
+                <a href="/privacy/">Privacy Policy</a>
+            </nav>
+            <div class="side-panel-cta">
                 <a href="/" class="btn-primary">Get Early Access</a>
             </div>
-            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+        </aside>
 
-    <!-- Side Panel -->
-    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
-    <aside class="side-panel">
-        <nav class="side-panel-nav">
-            <span class="nav-section-title">Navigate</span>
-            <a href="/">Home</a>
-            <a href="/products/">Products</a>
-            <a href="/about/">About</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>About PM4Subs</h1>
+            <p>
+                Built by a subcontractor who just wanted software that actually
+                works.
+            </p>
+        </section>
 
-            <span class="nav-section-title">Tools</span>
-            <a href="/spec-analyzer/">Spec Analyzer</a>
-            <a href="/header-tracker/">Header Tracker</a>
-            <a href="/tool-tracker/">Tool Tracker</a>
+        <!-- Story Section -->
+        <section class="section">
+            <div class="container">
+                <div class="card mb-4">
+                    <h2>Why I Started PM4Subs</h2>
+                    <p>
+                        After years of running masonry crews and juggling RFIs,
+                        photos, change orders, and estimates across emails and
+                        texts, I realized something: subcontractors don't have
+                        simple tools that fit the way we work.
+                    </p>
+                    <p class="mt-2">
+                        Everything on the market was too expensive, too slow, or
+                        designed by people who have never stepped onto a
+                        jobsite. So I started building small tools for my own
+                        company - quick header calculators, proposal helpers,
+                        and ways to stay organized.
+                    </p>
+                </div>
 
-            <span class="nav-section-title">Legal</span>
-            <a href="/privacy/">Privacy Policy</a>
-        </nav>
-        <div class="side-panel-cta">
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </aside>
+                <div class="card mb-4">
+                    <h2>Building Tools That Make Sense</h2>
+                    <p class="mb-2">
+                        PM4Subs exists because subcontractors deserve software
+                        that is:
+                    </p>
+                    <ul class="about-list">
+                        <li>Simple</li>
+                        <li>Affordable</li>
+                        <li>Fast</li>
+                        <li>Built around field work</li>
+                    </ul>
+                    <p class="mt-2">
+                        No complexity. No enterprise junk. Just tools that get
+                        the job done.
+                    </p>
+                </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>About PM4Subs</h1>
-        <p>Built by a subcontractor who just wanted software that actually works.</p>
-    </section>
+                <div class="card">
+                    <h2>By Subs, For Subs</h2>
+                    <p>
+                        Everything on this platform is built with real-world
+                        experience - from header rentals to spec analysis to
+                        tool tracking. If it doesn't save time on the job, it
+                        doesn't go in the product.
+                    </p>
+                </div>
 
-    <!-- Story Section -->
-    <section class="section">
-        <div class="container">
-            <div class="card mb-4">
-                <h2>Why I Started PM4Subs</h2>
+                <p class="text-muted text-center mt-4">
+                    Thanks for being part of the journey.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Ready to Try PM4Subs?</h2>
+                <p>Join subcontractors who are building better workflows</p>
+                <a href="/" class="btn-primary">Get Early Access</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
                 <p>
-                    After years of running masonry crews and juggling RFIs, photos, change orders, and estimates across
-                    emails and texts, I realized something: subcontractors don't have simple tools that fit the way we work.
+                    &copy; 2025 PM4Subs. All rights reserved. |
+                    <a href="/privacy/">Privacy Policy</a>
                 </p>
                 <p class="mt-2">
-                    Everything on the market was too expensive, too slow, or designed by people who have never stepped onto a jobsite.
-                    So I started building small tools for my own company - quick header calculators, proposal helpers, and ways to
-                    stay organized.
+                    Questions?
+                    <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
                 </p>
             </div>
+        </footer>
 
-            <div class="card mb-4">
-                <h2>Building Tools That Make Sense</h2>
-                <p class="mb-2">PM4Subs exists because subcontractors deserve software that is:</p>
-                <ul class="about-list">
-                    <li>Simple</li>
-                    <li>Affordable</li>
-                    <li>Fast</li>
-                    <li>Built around field work</li>
-                </ul>
-                <p class="mt-2">No complexity. No enterprise junk. Just tools that get the job done.</p>
-            </div>
-
-            <div class="card">
-                <h2>By Subs, For Subs</h2>
-                <p>
-                    Everything on this platform is built with real-world experience - from header rentals to spec analysis to
-                    tool tracking. If it doesn't save time on the job, it doesn't go in the product.
-                </p>
-            </div>
-
-            <p class="text-muted text-center mt-4">Thanks for being part of the journey.</p>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Try PM4Subs?</h2>
-            <p>Join subcontractors who are building better workflows</p>
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 PM4Subs. All rights reserved. | <a href="/privacy/">Privacy Policy</a></p>
-            <p class="mt-2">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
-        </div>
-    </footer>
-
-    <script>
-        function toggleSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.toggle('open');
-            overlay.classList.toggle('show');
-            hamburger.classList.toggle('active');
-            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
-        }
-        function closeSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.remove('open');
-            overlay.classList.remove('show');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeSidePanel();
-        });
-    </script>
-</body>
+        <script>
+            function toggleSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.toggle("open");
+                overlay.classList.toggle("show");
+                hamburger.classList.toggle("active");
+                document.body.style.overflow = sidePanel.classList.contains(
+                    "open",
+                )
+                    ? "hidden"
+                    : "";
+            }
+            function closeSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.remove("open");
+                overlay.classList.remove("show");
+                hamburger.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeSidePanel();
+            });
+        </script>
+    </body>
 </html>

@@ -1,155 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construction Spec Analyzer for Subcontractors | PM4Subs</title>
-    <meta name="description" content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours. Built for masonry, concrete, roofing, and waterproofing subs.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pm4subs.com/spec-analyzer/">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Construction Spec Analyzer for Subcontractors | PM4Subs</title>
+        <meta
+            name="description"
+            content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours. Built for masonry, concrete, roofing, and waterproofing subs."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://pm4subs.com/spec-analyzer/" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Construction Spec Analyzer for Subcontractors | PM4Subs">
-    <meta property="og:description" content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours.">
-    <meta property="og:url" content="https://pm4subs.com/spec-analyzer/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Open Graph -->
+        <meta
+            property="og:title"
+            content="Construction Spec Analyzer for Subcontractors | PM4Subs"
+        />
+        <meta
+            property="og:description"
+            content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours."
+        />
+        <meta property="og:url" content="https://pm4subs.com/spec-analyzer/" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Construction Spec Analyzer for Subcontractors | PM4Subs">
-    <meta name="twitter:description" content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours.">
-    <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Construction Spec Analyzer for Subcontractors | PM4Subs"
+        />
+        <meta
+            name="twitter:description"
+            content="Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours."
+        />
+        <meta
+            name="twitter:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+            };
+        </script>
 
-    <!-- Design System -->
-    <link rel="stylesheet" href="../design-system.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">PM4Subs</a>
-            <div class="nav-links">
+        <!-- Design System -->
+        <link rel="stylesheet" href="../design-system.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">PM4Subs</a>
+                <div class="nav-links">
+                    <a href="/products/">Products</a>
+                    <a href="/tools/">Tools</a>
+                    <a href="/about/">About</a>
+                    <a href="/" class="btn-primary">Get Early Access</a>
+                </div>
+                <button
+                    class="hamburger"
+                    onclick="toggleSidePanel()"
+                    aria-label="Toggle menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Side Panel -->
+        <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+        <aside class="side-panel">
+            <nav class="side-panel-nav">
+                <span class="nav-section-title">Navigate</span>
+                <a href="/">Home</a>
                 <a href="/products/">Products</a>
+                <a href="/tools/">Tools</a>
                 <a href="/about/">About</a>
+
+                <span class="nav-section-title">Free Tools</span>
+                <a href="/image-compressor/">Image Compressor</a>
+                <a href="/spec-analyzer/">Spec Analyzer</a>
+                <a href="/header-tracker/">Header Tracker</a>
+                <a href="/tool-tracker/">Tool Tracker</a>
+
+                <span class="nav-section-title">Legal</span>
+                <a href="/privacy/">Privacy Policy</a>
+            </nav>
+            <div class="side-panel-cta">
                 <a href="/" class="btn-primary">Get Early Access</a>
             </div>
-            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+        </aside>
 
-    <!-- Side Panel -->
-    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
-    <aside class="side-panel">
-        <nav class="side-panel-nav">
-            <span class="nav-section-title">Navigate</span>
-            <a href="/">Home</a>
-            <a href="/products/">Products</a>
-            <a href="/about/">About</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Construction Spec Analyzer for Subcontractors</h1>
+            <p>
+                Stop digging through 300-page spec books. The PM4Subs Spec
+                Analyzer extracts Division 00, 01, 04, and 07 requirements in
+                minutes, not hours.
+            </p>
+            <a href="/" class="btn-primary">Try the Spec Analyzer</a>
+        </section>
 
-            <span class="nav-section-title">Tools</span>
-            <a href="/spec-analyzer/">Spec Analyzer</a>
-            <a href="/header-tracker/">Header Tracker</a>
-            <a href="/tool-tracker/">Tool Tracker</a>
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="card">
+                        <h2>Instant PDF Spec Analysis</h2>
+                        <p>
+                            Upload any spec PDF and instantly pull out
+                            materials, accessories, submittal requirements,
+                            scope notes, and proposal-ready summaries. The
+                            analyzer understands masonry, concrete, roofing,
+                            waterproofing, and other subcontractor divisions.
+                        </p>
+                    </div>
 
-            <span class="nav-section-title">Legal</span>
-            <a href="/privacy/">Privacy Policy</a>
-        </nav>
-        <div class="side-panel-cta">
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </aside>
+                    <div class="card">
+                        <h2>Fast, Accurate Results</h2>
+                        <p>
+                            PM4Subs uses automated text extraction to identify
+                            critical requirements that affect bidding, planning,
+                            and submittals. No more missing a flashing note or
+                            cleaning requirement buried on page 147.
+                        </p>
+                    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Construction Spec Analyzer for Subcontractors</h1>
-        <p>Stop digging through 300-page spec books. The PM4Subs Spec Analyzer extracts Division 00, 01, 04, and 07 requirements in minutes, not hours.</p>
-        <a href="/" class="btn-primary">Try the Spec Analyzer</a>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <div class="feature-grid">
-                <div class="card">
-                    <h2>Instant PDF Spec Analysis</h2>
-                    <p>
-                        Upload any spec PDF and instantly pull out materials, accessories, submittal requirements, scope notes, and proposal-ready summaries.
-                        The analyzer understands masonry, concrete, roofing, waterproofing, and other subcontractor divisions.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h2>Fast, Accurate Results</h2>
-                    <p>
-                        PM4Subs uses automated text extraction to identify critical requirements that affect bidding, planning, and submittals.
-                        No more missing a flashing note or cleaning requirement buried on page 147.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h2>Built by a Subcontractor</h2>
-                    <p>
-                        I built this tool after years of spending hours searching spec books manually. Subs work too hard to waste time on bad systems.
-                        This analyzer is designed to help you win more work and avoid mistakes.
-                    </p>
+                    <div class="card">
+                        <h2>Built by a Subcontractor</h2>
+                        <p>
+                            I built this tool after years of spending hours
+                            searching spec books manually. Subs work too hard to
+                            waste time on bad systems. This analyzer is designed
+                            to help you win more work and avoid mistakes.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Stop Wasting Time on Spec Books</h2>
-            <p>Get the information you need in minutes, not hours</p>
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </section>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Stop Wasting Time on Spec Books</h2>
+                <p>Get the information you need in minutes, not hours</p>
+                <a href="/" class="btn-primary">Get Early Access</a>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 PM4Subs. All rights reserved. | <a href="/privacy/">Privacy Policy</a></p>
-            <p class="mt-2">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
-            <p class="mt-2"><a href="/">Back to PM4Subs project management for subcontractors</a></p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; 2025 PM4Subs. All rights reserved. |
+                    <a href="/privacy/">Privacy Policy</a>
+                </p>
+                <p class="mt-2">
+                    Questions?
+                    <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
+                </p>
+                <p class="mt-2">
+                    <a href="/"
+                        >Back to PM4Subs project management for
+                        subcontractors</a
+                    >
+                </p>
+            </div>
+        </footer>
 
-    <script>
-        function toggleSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.toggle('open');
-            overlay.classList.toggle('show');
-            hamburger.classList.toggle('active');
-            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
-        }
-        function closeSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.remove('open');
-            overlay.classList.remove('show');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeSidePanel();
-        });
-    </script>
-</body>
+        <script>
+            function toggleSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.toggle("open");
+                overlay.classList.toggle("show");
+                hamburger.classList.toggle("active");
+                document.body.style.overflow = sidePanel.classList.contains(
+                    "open",
+                )
+                    ? "hidden"
+                    : "";
+            }
+            function closeSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.remove("open");
+                overlay.classList.remove("show");
+                hamburger.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeSidePanel();
+            });
+        </script>
+    </body>
 </html>

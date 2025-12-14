@@ -1,497 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PM4Subs – Project Management Software for Subcontractors</title>
-    <meta name="description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place instead of chasing emails, texts, and spreadsheets.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pm4subs.com/">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PM4Subs – Project Management Software for Subcontractors</title>
+        <meta
+            name="description"
+            content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place instead of chasing emails, texts, and spreadsheets."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://pm4subs.com/" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="PM4Subs – Project Management Software for Subcontractors">
-    <meta property="og:description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.">
-    <meta property="og:url" content="https://pm4subs.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Open Graph -->
+        <meta
+            property="og:title"
+            content="PM4Subs – Project Management Software for Subcontractors"
+        />
+        <meta
+            property="og:description"
+            content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place."
+        />
+        <meta property="og:url" content="https://pm4subs.com/" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PM4Subs – Project Management Software for Subcontractors">
-    <meta name="twitter:description" content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.">
-    <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="PM4Subs – Project Management Software for Subcontractors"
+        />
+        <meta
+            name="twitter:description"
+            content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place."
+        />
+        <meta
+            name="twitter:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: 'rgb(var(--color-accent) / <alpha-value>)',
-                            light: 'rgb(var(--color-primary-light) / <alpha-value>)',
-                            dark: 'rgb(var(--color-primary-dark) / <alpha-value>)',
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            primary: {
+                                DEFAULT:
+                                    "rgb(var(--color-accent) / <alpha-value>)",
+                                light: "rgb(var(--color-primary-light) / <alpha-value>)",
+                                dark: "rgb(var(--color-primary-dark) / <alpha-value>)",
+                            },
+                            surface:
+                                "rgb(var(--color-surface) / <alpha-value>)",
+                            border: "rgb(var(--color-border) / <alpha-value>)",
                         },
-                        surface: 'rgb(var(--color-surface) / <alpha-value>)',
-                        border: 'rgb(var(--color-border) / <alpha-value>)',
+                    },
+                },
+            };
+        </script>
+
+        <!-- Design System -->
+        <link rel="stylesheet" href="design-system.css" />
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [
+                    {
+                        "@type": "Organization",
+                        "@id": "https://pm4subs.com/#org",
+                        "name": "PM4Subs",
+                        "url": "https://pm4subs.com/",
+                        "description": "Project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.",
+                        "logo": "https://pm4subs.com/screenshots/projects-dashboard.png",
+                        "founder": "Ryan Shanley",
+                        "sameAs": ["https://www.linkedin.com/company/pm4subs"]
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "@id": "https://pm4subs.com/#app",
+                        "name": "PM4Subs",
+                        "applicationCategory": "BusinessApplication",
+                        "operatingSystem": "Web",
+                        "offers": {
+                            "@type": "Offer",
+                            "url": "https://pm4subs.com/",
+                            "category": "subscription"
+                        },
+                        "publisher": {
+                            "@id": "https://pm4subs.com/#org"
+                        }
+                    },
+                    {
+                        "@type": "FAQPage",
+                        "@id": "https://pm4subs.com/#faq",
+                        "mainEntity": [
+                            {
+                                "@type": "Question",
+                                "name": "What is PM4Subs?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "PM4Subs is project management software built specifically for subcontractors. It helps track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Is PM4Subs only for masonry contractors?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "No. PM4Subs works for many trades, including masonry, concrete, framing, drywall, steel, and other subcontractors. It was designed by a masonry subcontractor but the workflows fit most trades."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "How is PM4Subs different from Procore or Buildertrend?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Procore and similar systems are built for general contractors and owners and can be heavy and expensive. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Can PM4Subs help with specs and submittals?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. The Spec Analyzer lets subcontractors upload large spec PDFs and quickly pull out the sections that matter for their trade, including materials, accessories, and submittal requirements."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Does PM4Subs replace my accounting software?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "No. PM4Subs works alongside your accounting system. It organizes jobs, tasks, specs, and field information so billing and job costing are cleaner, but it is not a full accounting platform."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Can my foremen use PM4Subs on their phones?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. PM4Subs is mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app."
+                                }
+                            }
+                        ]
                     }
-                }
+                ]
             }
-        }
-    </script>
-
-    <!-- Design System -->
-    <link rel="stylesheet" href="design-system.css">
-
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://pm4subs.com/#org",
-          "name": "PM4Subs",
-          "url": "https://pm4subs.com/",
-          "description": "Project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.",
-          "logo": "https://pm4subs.com/screenshots/projects-dashboard.png",
-          "founder": "Ryan Shanley",
-          "sameAs": [
-            "https://www.linkedin.com/company/pm4subs"
-          ]
-        },
-        {
-          "@type": "SoftwareApplication",
-          "@id": "https://pm4subs.com/#app",
-          "name": "PM4Subs",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web",
-          "offers": {
-            "@type": "Offer",
-            "url": "https://pm4subs.com/",
-            "category": "subscription"
-          },
-          "publisher": {
-            "@id": "https://pm4subs.com/#org"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://pm4subs.com/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "What is PM4Subs?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "PM4Subs is project management software built specifically for subcontractors. It helps track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is PM4Subs only for masonry contractors?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. PM4Subs works for many trades, including masonry, concrete, framing, drywall, steel, and other subcontractors. It was designed by a masonry subcontractor but the workflows fit most trades."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How is PM4Subs different from Procore or Buildertrend?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Procore and similar systems are built for general contractors and owners and can be heavy and expensive. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can PM4Subs help with specs and submittals?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. The Spec Analyzer lets subcontractors upload large spec PDFs and quickly pull out the sections that matter for their trade, including materials, accessories, and submittal requirements."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does PM4Subs replace my accounting software?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. PM4Subs works alongside your accounting system. It organizes jobs, tasks, specs, and field information so billing and job costing are cleaner, but it is not a full accounting platform."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can my foremen use PM4Subs on their phones?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. PM4Subs is mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app."
-              }
-            }
-          ]
-        }
-      ]
-    }
-    </script>
-
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">PM4Subs</a>
-            <div class="nav-links">
-                <a href="/products/">Products</a>
-                <a href="/about/">About</a>
-                <button class="btn-primary" onclick="showEmailModal()">Get Early Access</button>
+        </script>
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">PM4Subs</a>
+                <div class="nav-links">
+                    <a href="/products/">Products</a>
+                    <a href="/tools/">Tools</a>
+                    <a href="/about/">About</a>
+                    <button class="btn-primary" onclick="showEmailModal()">
+                        Get Early Access
+                    </button>
+                </div>
+                <button
+                    class="hamburger"
+                    onclick="toggleSidePanel()"
+                    aria-label="Toggle menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Side Panel -->
-    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
-    <aside class="side-panel">
-        <nav class="side-panel-nav">
-            <span class="nav-section-title">Navigate</span>
-            <a href="/">Home</a>
-            <a href="/products/">Products</a>
-            <a href="/about/">About</a>
-
-            <span class="nav-section-title">Tools</span>
-            <a href="/spec-analyzer/">Spec Analyzer</a>
-            <a href="/header-tracker/">Header Tracker</a>
-            <a href="/tool-tracker/">Tool Tracker</a>
-
-            <span class="nav-section-title">Legal</span>
-            <a href="/privacy/">Privacy Policy</a>
         </nav>
-        <div class="side-panel-cta">
-            <button class="btn-primary" onclick="showEmailModal(); closeSidePanel();">Get Early Access</button>
-        </div>
-    </aside>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1 class="hero-title">Project Management Software Built for Subcontractors</h1>
-        <p class="hero-subtitle">PM4Subs keeps your bids, jobs, specs, field tasks, and tools in one place. No more digging through emails, group texts, and random spreadsheets to figure out where a job is at. It's simple project management software built by a subcontractor, for subcontractors.</p>
-    </section>
+        <!-- Side Panel -->
+        <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+        <aside class="side-panel">
+            <nav class="side-panel-nav">
+                <span class="nav-section-title">Navigate</span>
+                <a href="/">Home</a>
+                <a href="/products/">Products</a>
+                <a href="/tools/">Tools</a>
+                <a href="/about/">About</a>
 
-    <!-- Pain Points Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Sound Familiar?</h2>
-            <p class="section-subtitle">These are the problems we built PM4Subs to solve</p>
-
-            <div class="grid-auto">
-                <div class="pain-card">
-                    <span class="icon icon-lg">📧</span>
-                    <h3 class="card-title">Where did the GC send that RFI?</h3>
-                    <p class="card-body">Digging through hundreds of emails and text messages trying to find critical project information that you know is buried somewhere.</p>
-                </div>
-
-                <div class="pain-card">
-                    <span class="icon icon-lg">📸</span>
-                    <h3 class="card-title">Photos scattered everywhere</h3>
-                    <p class="card-body">Pictures in your camera roll, texts, emails, WhatsApp. Good luck finding that specific photo from 3 weeks ago when the GC asks for it.</p>
-                </div>
-
-                <div class="pain-card">
-                    <span class="icon icon-lg">❓</span>
-                    <h3 class="card-title">What's actually due this week?</h3>
-                    <p class="card-body">Juggling multiple jobs with different deadlines, submittals, and requirements. It's in your head, not in a system.</p>
-                </div>
-
-                <div class="pain-card">
-                    <span class="icon icon-lg">📱</span>
-                    <h3 class="card-title">Field crew needs info NOW</h3>
-                    <p class="card-body">They're on site and need plans or specs, but you're in a meeting. Can't get them the info they need when they need it most.</p>
-                </div>
-
-                <div class="pain-card">
-                    <span class="icon icon-lg">💰</span>
-                    <h3 class="card-title">Tracking change orders is a nightmare</h3>
-                    <p class="card-body">Lost revenue because you can't remember what extras you did last month. By the time billing comes around, half of it's forgotten.</p>
-                </div>
-
-                <div class="pain-card">
-                    <span class="icon icon-lg">⏰</span>
-                    <h3 class="card-title">Hours wasted on admin work</h3>
-                    <p class="card-body">You should be running jobs and managing crews, not hunting for paperwork or recreating information you know you had somewhere.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who PM4Subs Is For -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Who PM4Subs Is For</h2>
-            <p class="section-subtitle">PM4Subs is made for trade contractors who actually do the work: masonry, concrete, framing, drywall, steel, and other subcontractors who are tired of trying to make "GC software" fit their day-to-day. If you run crews, chase change orders, and juggle multiple jobs at once, PM4Subs is built for you.</p>
-        </div>
-    </section>
-
-    <!-- Why Subcontractors Need Their Own System -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Why Subcontractors Need Their Own System</h2>
-            <p class="section-subtitle">Most project management tools are built for general contractors. They're heavy, expensive, and designed around RFIs, drawing logs, and owner meetings. Subcontractors live in a different world: quotes, purchase orders, manpower, tools, small change orders, and keeping foremen on the same page. PM4Subs focuses on what subs actually need instead of burying you in features you'll never use.</p>
-        </div>
-    </section>
-
-    <!-- Everything in One Place Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Everything in One Place</h2>
-            <p class="section-subtitle">Built by masons who got tired of the chaos</p>
-
-            <div class="grid-auto">
-                <div class="feature-card">
-                    <span class="icon">📋</span>
-                    <h3 class="card-title">Bid & Job Tracking</h3>
-                    <p class="card-body">See what you've bid, what you've won, and what's coming up next. Every project organized and accessible from your phone or computer.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="icon">📄</span>
-                    <h3 class="card-title"><a href="/spec-analyzer/">Spec Analyzer for Subcontractors</a></h3>
-                    <p class="card-body">Upload spec PDFs and quickly pull out the sections that matter for your trade, instead of scrolling through 2,000+ pages.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="icon">👷</span>
-                    <h3 class="card-title">Field & Foreman Tasks</h3>
-                    <p class="card-body">Turn office to-do lists into clear task lists for your foremen, tied to real jobs.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="icon">🔧</span>
-                    <h3 class="card-title"><a href="/tool-tracker/">Tool & Equipment Tracking</a></h3>
-                    <p class="card-body">Know which job your tools and rental gear are on so nothing disappears into a jobsite black hole.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How PM4Subs Fits Into Your Day -->
-    <section class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">How PM4Subs Fits Into Your Day</h2>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <span class="icon">1️⃣</span>
-                    <h3 class="card-title">Set Up Your Company and Jobs</h3>
-                    <p class="card-body">Add a few active projects and the GCs you work for.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="icon">2️⃣</span>
-                    <h3 class="card-title">Upload Specs and Set Tasks</h3>
-                    <p class="card-body">Drop in spec PDFs, create job checklists, and assign tasks to the office or field.</p>
-                </div>
-
-                <div class="feature-card">
-                    <span class="icon">3️⃣</span>
-                    <h3 class="card-title">Keep Everything Moving</h3>
-                    <p class="card-body">Foremen update tasks, the office tracks bids and jobs, and you always know what's going on without asking for another update text.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Real-World Example -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">Real-World Example</h2>
-            <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.125rem; line-height: 1.8;">
-                    You get invited to bid a new school and the spec book is 2,400 pages. Normally, you scroll for hours, trying not to miss anything in Division 4 or related sections. With PM4Subs, you upload the PDF, let the <a href="/spec-analyzer/">Spec Analyzer</a> pull out the masonry-related content, and build your scope and submittal list faster. Once you win the job, the same project in PM4Subs becomes the place where you track tasks, tools on site, and simple field change orders.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section class="screenshots">
-        <div class="container">
-            <h2 class="section-title">See It in Action</h2>
-            
-            <div class="screenshots-layout">
-                <!-- Mobile Screenshot Column -->
-                <div class="mobile-column">
-                    <div class="screenshot-card">                  
-                        <img src="screenshots/mobile-camera.png" alt="Mobile dashboard with camera button">
-                        <div class="screenshot-caption">
-                            <h4>Mobile-First Design</h4>
-                            <p>Quick camera access. Track tasks on the go.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Desktop Screenshots Column -->
-                <div class="desktop-column">
-                    <div class="screenshot-card">
-                        <img src="screenshots/projects-dashboard.png" alt="Active jobs dashboard">
-                        <div class="screenshot-caption">
-                            <h4>Active Jobs Dashboard</h4>
-                            <p>Track all your projects in one place. Filter, search, and sort instantly.</p>
-                        </div>
-                    </div>
-
-                    <div class="screenshot-card">
-                        <img src="screenshots/photo-gallery.png" alt="Photo gallery with filters">
-                        <div class="screenshot-caption">
-                            <h4>Organized Photos</h4>
-                            <p>Filter by category, project, or date. GPS tagging included.</p>
-                        </div>
-                    </div>
-
-                    <div class="screenshot-card">
-                        <img src="screenshots/proposals-dashboard.png" alt="Proposals organized by status">
-                        <div class="screenshot-caption">
-                            <h4>Proposal Tracking</h4>
-                            <p>Kanban view of all proposals. Never lose track of a bid.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">FAQs</h2>
-
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3 class="faq-question">What is PM4Subs?</h3>
-                    <p class="faq-answer">PM4Subs is project management software built specifically for subcontractors. It helps you track bids, jobs, specs, field tasks, and tools in one place so you spend less time chasing information and more time running work.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Is PM4Subs only for masonry contractors?</h3>
-                    <p class="faq-answer">No. PM4Subs works for any trade contractor, including masonry, concrete, framing, drywall, steel, and other subs. It was designed by a masonry subcontractor, but the workflows are flexible enough for most trades.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">How is PM4Subs different from Procore or Buildertrend?</h3>
-                    <p class="faq-answer">Procore and similar systems are built for general contractors and owners. They're powerful, but often too heavy and expensive for subs. PM4Subs focuses on what subcontractors actually need: clear job tracking, spec review, simple field tools, and staying organized without full-time office staff.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Can PM4Subs help with specs and submittals?</h3>
-                    <p class="faq-answer">Yes. The <a href="/spec-analyzer/">Spec Analyzer</a> is built for subcontractors who receive huge spec books. You can upload a PDF and quickly pull out the sections that matter for your trade, including materials, accessories, and submittal requirements, so you don't miss scope items.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Does PM4Subs replace my accounting software?</h3>
-                    <p class="faq-answer">No. PM4Subs is designed to work alongside your existing accounting system. It helps you organize jobs, tasks, specs, and field information so your accounting and billing are cleaner and easier, but it doesn't try to be a full accounting platform.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">Can my foremen use PM4Subs on their phones?</h3>
-                    <p class="faq-answer">Yes. PM4Subs is built to be simple and mobile-friendly so foremen can see job tasks, upload photos, and update the office from their phone without fighting a complicated app.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h3 class="faq-question">How do I get started?</h3>
-                    <p class="faq-answer">Create an account, set up your company, and add a couple of active jobs. From there you can try the core project management tools and decide which modules—like the <a href="/spec-analyzer/">Spec Analyzer</a> or <a href="/tool-tracker/">tool tracking</a>—you want to turn on next.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Stop Fighting Your Tools</h2>
-            <p class="cta-subtitle">Simple, subcontractor-friendly pricing. No long contracts, no per-feature add-ons, and no surprise "implementation" fees.</p>
-            <button class="btn-primary btn-lg" onclick="showEmailModal()">Get Early Access</button>
-        </div>
-    </section>
-
-    <!-- Modal -->
-    <div id="emailModal" class="modal-overlay" onclick="closeModalOnOverlay(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeEmailModal()">&times;</button>
-            <h3 class="modal-title">Request Early Access</h3>
-            <form id="waitlistForm" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label class="form-label" for="name">Full Name</label>
-                    <input class="form-input" type="text" id="name" name="name" required placeholder="John Smith">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email Address</label>
-                    <input class="form-input" type="email" id="email" name="email" required placeholder="john@company.com">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="company">Company Name (Optional)</label>
-                    <input class="form-input" type="text" id="company" name="company" placeholder="Your Company">
-                </div>
-                <button type="submit" class="btn-primary w-full">Request Access</button>
-                <div id="successMessage" class="success-message">
-                    Thanks! We'll be in touch soon.
-                </div>
-                <p class="form-note">We'll personally reach out with your invite link</p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Quick Links for SEO -->
-    <section class="quick-links-section">
-        <div class="container">
-            <h3 class="quick-links-title">Explore PM4Subs Tools</h3>
-            <nav class="quick-links">
+                <span class="nav-section-title">Free Tools</span>
+                <a href="/image-compressor/">Image Compressor</a>
                 <a href="/spec-analyzer/">Spec Analyzer</a>
                 <a href="/header-tracker/">Header Tracker</a>
                 <a href="/tool-tracker/">Tool Tracker</a>
-                <a href="/products/">All Products</a>
-                <a href="/about/">About Us</a>
+
+                <span class="nav-section-title">Legal</span>
+                <a href="/privacy/">Privacy Policy</a>
             </nav>
+            <div class="side-panel-cta">
+                <button
+                    class="btn-primary"
+                    onclick="
+                        showEmailModal();
+                        closeSidePanel();
+                    "
+                >
+                    Get Early Access
+                </button>
+            </div>
+        </aside>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="hero-title">
+                Project Management Software Built for Subcontractors
+            </h1>
+            <p class="hero-subtitle">
+                PM4Subs keeps your bids, jobs, specs, field tasks, and tools in
+                one place. No more digging through emails, group texts, and
+                random spreadsheets to figure out where a job is at. It's simple
+                project management software built by a subcontractor, for
+                subcontractors.
+            </p>
+        </section>
+
+        <!-- Pain Points Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Sound Familiar?</h2>
+                <p class="section-subtitle">
+                    These are the problems we built PM4Subs to solve
+                </p>
+
+                <div class="grid-auto">
+                    <div class="pain-card">
+                        <span class="icon icon-lg">📧</span>
+                        <h3 class="card-title">
+                            Where did the GC send that RFI?
+                        </h3>
+                        <p class="card-body">
+                            Digging through hundreds of emails and text messages
+                            trying to find critical project information that you
+                            know is buried somewhere.
+                        </p>
+                    </div>
+
+                    <div class="pain-card">
+                        <span class="icon icon-lg">📸</span>
+                        <h3 class="card-title">Photos scattered everywhere</h3>
+                        <p class="card-body">
+                            Pictures in your camera roll, texts, emails,
+                            WhatsApp. Good luck finding that specific photo from
+                            3 weeks ago when the GC asks for it.
+                        </p>
+                    </div>
+
+                    <div class="pain-card">
+                        <span class="icon icon-lg">❓</span>
+                        <h3 class="card-title">
+                            What's actually due this week?
+                        </h3>
+                        <p class="card-body">
+                            Juggling multiple jobs with different deadlines,
+                            submittals, and requirements. It's in your head, not
+                            in a system.
+                        </p>
+                    </div>
+
+                    <div class="pain-card">
+                        <span class="icon icon-lg">📱</span>
+                        <h3 class="card-title">Field crew needs info NOW</h3>
+                        <p class="card-body">
+                            They're on site and need plans or specs, but you're
+                            in a meeting. Can't get them the info they need when
+                            they need it most.
+                        </p>
+                    </div>
+
+                    <div class="pain-card">
+                        <span class="icon icon-lg">💰</span>
+                        <h3 class="card-title">
+                            Tracking change orders is a nightmare
+                        </h3>
+                        <p class="card-body">
+                            Lost revenue because you can't remember what extras
+                            you did last month. By the time billing comes
+                            around, half of it's forgotten.
+                        </p>
+                    </div>
+
+                    <div class="pain-card">
+                        <span class="icon icon-lg">⏰</span>
+                        <h3 class="card-title">Hours wasted on admin work</h3>
+                        <p class="card-body">
+                            You should be running jobs and managing crews, not
+                            hunting for paperwork or recreating information you
+                            know you had somewhere.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who PM4Subs Is For -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Who PM4Subs Is For</h2>
+                <p class="section-subtitle">
+                    PM4Subs is made for trade contractors who actually do the
+                    work: masonry, concrete, framing, drywall, steel, and other
+                    subcontractors who are tired of trying to make "GC software"
+                    fit their day-to-day. If you run crews, chase change orders,
+                    and juggle multiple jobs at once, PM4Subs is built for you.
+                </p>
+            </div>
+        </section>
+
+        <!-- Why Subcontractors Need Their Own System -->
+        <section class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">
+                    Why Subcontractors Need Their Own System
+                </h2>
+                <p class="section-subtitle">
+                    Most project management tools are built for general
+                    contractors. They're heavy, expensive, and designed around
+                    RFIs, drawing logs, and owner meetings. Subcontractors live
+                    in a different world: quotes, purchase orders, manpower,
+                    tools, small change orders, and keeping foremen on the same
+                    page. PM4Subs focuses on what subs actually need instead of
+                    burying you in features you'll never use.
+                </p>
+            </div>
+        </section>
+
+        <!-- Everything in One Place Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Everything in One Place</h2>
+                <p class="section-subtitle">
+                    Built by masons who got tired of the chaos
+                </p>
+
+                <div class="grid-auto">
+                    <div class="feature-card">
+                        <span class="icon">📋</span>
+                        <h3 class="card-title">Bid & Job Tracking</h3>
+                        <p class="card-body">
+                            See what you've bid, what you've won, and what's
+                            coming up next. Every project organized and
+                            accessible from your phone or computer.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="icon">📄</span>
+                        <h3 class="card-title">
+                            <a href="/spec-analyzer/"
+                                >Spec Analyzer for Subcontractors</a
+                            >
+                        </h3>
+                        <p class="card-body">
+                            Upload spec PDFs and quickly pull out the sections
+                            that matter for your trade, instead of scrolling
+                            through 2,000+ pages.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="icon">👷</span>
+                        <h3 class="card-title">Field & Foreman Tasks</h3>
+                        <p class="card-body">
+                            Turn office to-do lists into clear task lists for
+                            your foremen, tied to real jobs.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="icon">🔧</span>
+                        <h3 class="card-title">
+                            <a href="/tool-tracker/"
+                                >Tool & Equipment Tracking</a
+                            >
+                        </h3>
+                        <p class="card-body">
+                            Know which job your tools and rental gear are on so
+                            nothing disappears into a jobsite black hole.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How PM4Subs Fits Into Your Day -->
+        <section class="section section-alt">
+            <div class="container">
+                <h2 class="section-title">How PM4Subs Fits Into Your Day</h2>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <span class="icon">1️⃣</span>
+                        <h3 class="card-title">Set Up Your Company and Jobs</h3>
+                        <p class="card-body">
+                            Add a few active projects and the GCs you work for.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="icon">2️⃣</span>
+                        <h3 class="card-title">Upload Specs and Set Tasks</h3>
+                        <p class="card-body">
+                            Drop in spec PDFs, create job checklists, and assign
+                            tasks to the office or field.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <span class="icon">3️⃣</span>
+                        <h3 class="card-title">Keep Everything Moving</h3>
+                        <p class="card-body">
+                            Foremen update tasks, the office tracks bids and
+                            jobs, and you always know what's going on without
+                            asking for another update text.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Real-World Example -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Real-World Example</h2>
+                <div class="card" style="max-width: 800px; margin: 0 auto">
+                    <p style="font-size: 1.125rem; line-height: 1.8">
+                        You get invited to bid a new school and the spec book is
+                        2,400 pages. Normally, you scroll for hours, trying not
+                        to miss anything in Division 4 or related sections. With
+                        PM4Subs, you upload the PDF, let the
+                        <a href="/spec-analyzer/">Spec Analyzer</a> pull out the
+                        masonry-related content, and build your scope and
+                        submittal list faster. Once you win the job, the same
+                        project in PM4Subs becomes the place where you track
+                        tasks, tools on site, and simple field change orders.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="screenshots">
+            <div class="container">
+                <h2 class="section-title">See It in Action</h2>
+
+                <div class="screenshots-layout">
+                    <!-- Mobile Screenshot Column -->
+                    <div class="mobile-column">
+                        <div class="screenshot-card">
+                            <img
+                                src="screenshots/mobile-camera.png"
+                                alt="Mobile dashboard with camera button"
+                            />
+                            <div class="screenshot-caption">
+                                <h4>Mobile-First Design</h4>
+                                <p>
+                                    Quick camera access. Track tasks on the go.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Screenshots Column -->
+                    <div class="desktop-column">
+                        <div class="screenshot-card">
+                            <img
+                                src="screenshots/projects-dashboard.png"
+                                alt="Active jobs dashboard"
+                            />
+                            <div class="screenshot-caption">
+                                <h4>Active Jobs Dashboard</h4>
+                                <p>
+                                    Track all your projects in one place.
+                                    Filter, search, and sort instantly.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="screenshot-card">
+                            <img
+                                src="screenshots/photo-gallery.png"
+                                alt="Photo gallery with filters"
+                            />
+                            <div class="screenshot-caption">
+                                <h4>Organized Photos</h4>
+                                <p>
+                                    Filter by category, project, or date. GPS
+                                    tagging included.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="screenshot-card">
+                            <img
+                                src="screenshots/proposals-dashboard.png"
+                                alt="Proposals organized by status"
+                            />
+                            <div class="screenshot-caption">
+                                <h4>Proposal Tracking</h4>
+                                <p>
+                                    Kanban view of all proposals. Never lose
+                                    track of a bid.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">FAQs</h2>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-question">What is PM4Subs?</h3>
+                        <p class="faq-answer">
+                            PM4Subs is project management software built
+                            specifically for subcontractors. It helps you track
+                            bids, jobs, specs, field tasks, and tools in one
+                            place so you spend less time chasing information and
+                            more time running work.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            Is PM4Subs only for masonry contractors?
+                        </h3>
+                        <p class="faq-answer">
+                            No. PM4Subs works for any trade contractor,
+                            including masonry, concrete, framing, drywall,
+                            steel, and other subs. It was designed by a masonry
+                            subcontractor, but the workflows are flexible enough
+                            for most trades.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            How is PM4Subs different from Procore or
+                            Buildertrend?
+                        </h3>
+                        <p class="faq-answer">
+                            Procore and similar systems are built for general
+                            contractors and owners. They're powerful, but often
+                            too heavy and expensive for subs. PM4Subs focuses on
+                            what subcontractors actually need: clear job
+                            tracking, spec review, simple field tools, and
+                            staying organized without full-time office staff.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            Can PM4Subs help with specs and submittals?
+                        </h3>
+                        <p class="faq-answer">
+                            Yes. The
+                            <a href="/spec-analyzer/">Spec Analyzer</a> is built
+                            for subcontractors who receive huge spec books. You
+                            can upload a PDF and quickly pull out the sections
+                            that matter for your trade, including materials,
+                            accessories, and submittal requirements, so you
+                            don't miss scope items.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            Does PM4Subs replace my accounting software?
+                        </h3>
+                        <p class="faq-answer">
+                            No. PM4Subs is designed to work alongside your
+                            existing accounting system. It helps you organize
+                            jobs, tasks, specs, and field information so your
+                            accounting and billing are cleaner and easier, but
+                            it doesn't try to be a full accounting platform.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">
+                            Can my foremen use PM4Subs on their phones?
+                        </h3>
+                        <p class="faq-answer">
+                            Yes. PM4Subs is built to be simple and
+                            mobile-friendly so foremen can see job tasks, upload
+                            photos, and update the office from their phone
+                            without fighting a complicated app.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">How do I get started?</h3>
+                        <p class="faq-answer">
+                            Create an account, set up your company, and add a
+                            couple of active jobs. From there you can try the
+                            core project management tools and decide which
+                            modules—like the
+                            <a href="/spec-analyzer/">Spec Analyzer</a> or
+                            <a href="/tool-tracker/">tool tracking</a>—you want
+                            to turn on next.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Stop Fighting Your Tools</h2>
+                <p class="cta-subtitle">
+                    Simple, subcontractor-friendly pricing. No long contracts,
+                    no per-feature add-ons, and no surprise "implementation"
+                    fees.
+                </p>
+                <button class="btn-primary btn-lg" onclick="showEmailModal()">
+                    Get Early Access
+                </button>
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <div
+            id="emailModal"
+            class="modal-overlay"
+            onclick="closeModalOnOverlay(event)"
+        >
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeEmailModal()">
+                    &times;
+                </button>
+                <h3 class="modal-title">Request Early Access</h3>
+                <form id="waitlistForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            placeholder="John Smith"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email"
+                            >Email Address</label
+                        >
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="john@company.com"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="company"
+                            >Company Name (Optional)</label
+                        >
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="Your Company"
+                        />
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        Request Access
+                    </button>
+                    <div id="successMessage" class="success-message">
+                        Thanks! We'll be in touch soon.
+                    </div>
+                    <p class="form-note">
+                        We'll personally reach out with your invite link
+                    </p>
+                </form>
+            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 PM4Subs. All rights reserved. | <a href="/privacy/">Privacy Policy</a></p>
-            <p style="margin-top: 10px;">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
+        <!-- Quick Links for SEO -->
+        <section class="quick-links-section">
+            <div class="container">
+                <h3 class="quick-links-title">Explore PM4Subs Tools</h3>
+                <nav class="quick-links">
+                    <a href="/spec-analyzer/">Spec Analyzer</a>
+                    <a href="/header-tracker/">Header Tracker</a>
+                    <a href="/tool-tracker/">Tool Tracker</a>
+                    <a href="/products/">All Products</a>
+                    <a href="/about/">About Us</a>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    &copy; 2025 PM4Subs. All rights reserved. |
+                    <a href="/privacy/">Privacy Policy</a>
+                </p>
+                <p style="margin-top: 10px">
+                    Questions?
+                    <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
+                </p>
+            </div>
+        </footer>
+
+        <!-- Floating CTA Button -->
+        <div class="floating-cta">
+            <button class="floating-cta-button" onclick="showEmailModal()">
+                🚀 Get on the Beta List
+            </button>
         </div>
-    </footer>
 
-    <!-- Floating CTA Button -->
-    <div class="floating-cta">
-        <button class="floating-cta-button" onclick="showEmailModal()">
-            🚀 Get on the Beta List
-        </button>
-    </div>
-
-    <script>
-        // Show modal when CTA button clicked
-        function showEmailModal() {
-            document.getElementById('emailModal').classList.add('show');
-        }
-
-        // Close modal
-        function closeEmailModal() {
-            document.getElementById('emailModal').classList.remove('show');
-        }
-
-        // Close modal when clicking outside
-        function closeModalOnOverlay(event) {
-            if (event.target.id === 'emailModal') {
-                closeEmailModal();
+        <script>
+            // Show modal when CTA button clicked
+            function showEmailModal() {
+                document.getElementById("emailModal").classList.add("show");
             }
-        }
 
-        // Auto-show modal after 10 seconds (optional - uncomment to enable)
-        /*
+            // Close modal
+            function closeEmailModal() {
+                document.getElementById("emailModal").classList.remove("show");
+            }
+
+            // Close modal when clicking outside
+            function closeModalOnOverlay(event) {
+                if (event.target.id === "emailModal") {
+                    closeEmailModal();
+                }
+            }
+
+            // Auto-show modal after 10 seconds (optional - uncomment to enable)
+            /*
         setTimeout(() => {
             if (!localStorage.getItem('pm4subs_modal_shown')) {
                 showEmailModal();
@@ -500,66 +760,74 @@
         }, 10000);
         */
 
-        // Handle form submission
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const company = document.getElementById('company').value;
-            
-            // mailto approach (works immediately)
-            const subject = encodeURIComponent('PM4Subs Early Access Request');
-            const body = encodeURIComponent(
-                `New early access request:\n\n` +
-                `Name: ${name}\n` +
-                `Email: ${email}\n` +
-                `Company: ${company || 'Not provided'}\n`
-            );
-            
-            window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
-            
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
-            document.getElementById('waitlistForm').reset();
-            
-            // Close modal after 2 seconds
-            setTimeout(() => {
-                closeEmailModal();
-                document.getElementById('successMessage').style.display = 'none';
-            }, 2000);
-        }
+            // Handle form submission
+            function handleSubmit(event) {
+                event.preventDefault();
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeEmailModal();
-                closeSidePanel();
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const company = document.getElementById("company").value;
+
+                // mailto approach (works immediately)
+                const subject = encodeURIComponent(
+                    "PM4Subs Early Access Request",
+                );
+                const body = encodeURIComponent(
+                    `New early access request:\n\n` +
+                        `Name: ${name}\n` +
+                        `Email: ${email}\n` +
+                        `Company: ${company || "Not provided"}\n`,
+                );
+
+                window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
+
+                // Show success message
+                document.getElementById("successMessage").style.display =
+                    "block";
+                document.getElementById("waitlistForm").reset();
+
+                // Close modal after 2 seconds
+                setTimeout(() => {
+                    closeEmailModal();
+                    document.getElementById("successMessage").style.display =
+                        "none";
+                }, 2000);
             }
-        });
 
-        // Side panel functions
-        function toggleSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
+            // Close modal with Escape key
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    closeEmailModal();
+                    closeSidePanel();
+                }
+            });
 
-            sidePanel.classList.toggle('open');
-            overlay.classList.toggle('show');
-            hamburger.classList.toggle('active');
-            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
-        }
+            // Side panel functions
+            function toggleSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
 
-        function closeSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
+                sidePanel.classList.toggle("open");
+                overlay.classList.toggle("show");
+                hamburger.classList.toggle("active");
+                document.body.style.overflow = sidePanel.classList.contains(
+                    "open",
+                )
+                    ? "hidden"
+                    : "";
+            }
 
-            sidePanel.classList.remove('open');
-            overlay.classList.remove('show');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-    </script>
-</body>
+            function closeSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+
+                sidePanel.classList.remove("open");
+                overlay.classList.remove("show");
+                hamburger.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+        </script>
+    </body>
 </html>

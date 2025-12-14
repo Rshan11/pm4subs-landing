@@ -1,154 +1,205 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tool Tracking for Subcontractors | PM4Subs</title>
-    <meta name="description" content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable. Built for subcontractors.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pm4subs.com/tool-tracker/">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tool Tracking for Subcontractors | PM4Subs</title>
+        <meta
+            name="description"
+            content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable. Built for subcontractors."
+        />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://pm4subs.com/tool-tracker/" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Tool Tracking for Subcontractors | PM4Subs">
-    <meta property="og:description" content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable.">
-    <meta property="og:url" content="https://pm4subs.com/tool-tracker/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Open Graph -->
+        <meta
+            property="og:title"
+            content="Tool Tracking for Subcontractors | PM4Subs"
+        />
+        <meta
+            property="og:description"
+            content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable."
+        />
+        <meta property="og:url" content="https://pm4subs.com/tool-tracker/" />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tool Tracking for Subcontractors | PM4Subs">
-    <meta name="twitter:description" content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable.">
-    <meta name="twitter:image" content="https://pm4subs.com/screenshots/projects-dashboard.png">
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Tool Tracking for Subcontractors | PM4Subs"
+        />
+        <meta
+            name="twitter:description"
+            content="A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable."
+        />
+        <meta
+            name="twitter:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-    </script>
+        <!-- Tailwind CSS CDN -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+            };
+        </script>
 
-    <!-- Design System -->
-    <link rel="stylesheet" href="../design-system.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">PM4Subs</a>
-            <div class="nav-links">
+        <!-- Design System -->
+        <link rel="stylesheet" href="../design-system.css" />
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">PM4Subs</a>
+                <div class="nav-links">
+                    <a href="/products/">Products</a>
+                    <a href="/tools/">Tools</a>
+                    <a href="/about/">About</a>
+                    <a href="/" class="btn-primary">Get Early Access</a>
+                </div>
+                <button
+                    class="hamburger"
+                    onclick="toggleSidePanel()"
+                    aria-label="Toggle menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Side Panel -->
+        <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
+        <aside class="side-panel">
+            <nav class="side-panel-nav">
+                <span class="nav-section-title">Navigate</span>
+                <a href="/">Home</a>
                 <a href="/products/">Products</a>
+                <a href="/tools/">Tools</a>
                 <a href="/about/">About</a>
+
+                <span class="nav-section-title">Free Tools</span>
+                <a href="/image-compressor/">Image Compressor</a>
+                <a href="/spec-analyzer/">Spec Analyzer</a>
+                <a href="/header-tracker/">Header Tracker</a>
+                <a href="/tool-tracker/">Tool Tracker</a>
+
+                <span class="nav-section-title">Legal</span>
+                <a href="/privacy/">Privacy Policy</a>
+            </nav>
+            <div class="side-panel-cta">
                 <a href="/" class="btn-primary">Get Early Access</a>
             </div>
-            <button class="hamburger" onclick="toggleSidePanel()" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </nav>
+        </aside>
 
-    <!-- Side Panel -->
-    <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
-    <aside class="side-panel">
-        <nav class="side-panel-nav">
-            <span class="nav-section-title">Navigate</span>
-            <a href="/">Home</a>
-            <a href="/products/">Products</a>
-            <a href="/about/">About</a>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Tool Tracking for Subcontractors</h1>
+            <p>
+                A simple check-in/check-out system for tools, equipment, and
+                assets. Reduce loss and keep your crew accountable.
+            </p>
+            <a href="/" class="btn-primary">Learn More</a>
+        </section>
 
-            <span class="nav-section-title">Tools</span>
-            <a href="/spec-analyzer/">Spec Analyzer</a>
-            <a href="/header-tracker/">Header Tracker</a>
-            <a href="/tool-tracker/">Tool Tracker</a>
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="feature-grid">
+                    <div class="card">
+                        <h2>Track Tools Across Jobs</h2>
+                        <p>
+                            Assign tools to jobs or employees, track movement
+                            history, and manage returns with a clean, easy
+                            interface. No more wondering where the laser,
+                            grinder, or mixer went.
+                        </p>
+                    </div>
 
-            <span class="nav-section-title">Legal</span>
-            <a href="/privacy/">Privacy Policy</a>
-        </nav>
-        <div class="side-panel-cta">
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </aside>
+                    <div class="card">
+                        <h2>Multi Check-In</h2>
+                        <p>
+                            Check in multiple items at once to speed up
+                            end-of-day or end-of-job returns. Built for
+                            high-volume trades with lots of small tools.
+                        </p>
+                    </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Tool Tracking for Subcontractors</h1>
-        <p>A simple check-in/check-out system for tools, equipment, and assets. Reduce loss and keep your crew accountable.</p>
-        <a href="/" class="btn-primary">Learn More</a>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section">
-        <div class="container">
-            <div class="feature-grid">
-                <div class="card">
-                    <h2>Track Tools Across Jobs</h2>
-                    <p>
-                        Assign tools to jobs or employees, track movement history, and manage returns with a clean, easy interface.
-                        No more wondering where the laser, grinder, or mixer went.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h2>Multi Check-In</h2>
-                    <p>
-                        Check in multiple items at once to speed up end-of-day or end-of-job returns. Built for high-volume trades
-                        with lots of small tools.
-                    </p>
-                </div>
-
-                <div class="card">
-                    <h2>Field-Friendly</h2>
-                    <p>
-                        This tool is built for speed - whether your foreman is on their phone, tablet, or laptop. No overbuilt bloat, just clarity.
-                    </p>
+                    <div class="card">
+                        <h2>Field-Friendly</h2>
+                        <p>
+                            This tool is built for speed - whether your foreman
+                            is on their phone, tablet, or laptop. No overbuilt
+                            bloat, just clarity.
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Stop Losing Tools</h2>
-            <p>Keep your crew accountable and your yard organized</p>
-            <a href="/" class="btn-primary">Get Early Access</a>
-        </div>
-    </section>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>Stop Losing Tools</h2>
+                <p>Keep your crew accountable and your yard organized</p>
+                <a href="/" class="btn-primary">Get Early Access</a>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 PM4Subs. All rights reserved. | <a href="/privacy/">Privacy Policy</a></p>
-            <p class="mt-2">Questions? <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a></p>
-            <p class="mt-2"><a href="/">Back to PM4Subs project management for subcontractors</a></p>
-        </div>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>
+                    &copy; 2025 PM4Subs. All rights reserved. |
+                    <a href="/privacy/">Privacy Policy</a>
+                </p>
+                <p class="mt-2">
+                    Questions?
+                    <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
+                </p>
+                <p class="mt-2">
+                    <a href="/"
+                        >Back to PM4Subs project management for
+                        subcontractors</a
+                    >
+                </p>
+            </div>
+        </footer>
 
-    <script>
-        function toggleSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.toggle('open');
-            overlay.classList.toggle('show');
-            hamburger.classList.toggle('active');
-            document.body.style.overflow = sidePanel.classList.contains('open') ? 'hidden' : '';
-        }
-        function closeSidePanel() {
-            const sidePanel = document.querySelector('.side-panel');
-            const overlay = document.querySelector('.side-panel-overlay');
-            const hamburger = document.querySelector('.hamburger');
-            sidePanel.classList.remove('open');
-            overlay.classList.remove('show');
-            hamburger.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeSidePanel();
-        });
-    </script>
-</body>
+        <script>
+            function toggleSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.toggle("open");
+                overlay.classList.toggle("show");
+                hamburger.classList.toggle("active");
+                document.body.style.overflow = sidePanel.classList.contains(
+                    "open",
+                )
+                    ? "hidden"
+                    : "";
+            }
+            function closeSidePanel() {
+                const sidePanel = document.querySelector(".side-panel");
+                const overlay = document.querySelector(".side-panel-overlay");
+                const hamburger = document.querySelector(".hamburger");
+                sidePanel.classList.remove("open");
+                overlay.classList.remove("show");
+                hamburger.classList.remove("active");
+                document.body.style.overflow = "";
+            }
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeSidePanel();
+            });
+        </script>
+    </body>
 </html>
