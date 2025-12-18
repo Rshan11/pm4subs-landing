@@ -226,20 +226,6 @@
                             <option value="webp">WebP</option>
                         </select>
                     </div>
-
-                    <div>
-                        <label
-                            class="block text-sm font-semibold mb-2 text-blue-400"
-                        >
-                            Project Name (for file naming)
-                        </label>
-                        <input
-                            type="text"
-                            id="projectName"
-                            placeholder="e.g., Riverside Elementary"
-                            class="px-4 py-2 bg-gray-900 border border-gray-600 rounded-lg text-gray-100 text-sm w-64 focus:outline-none focus:border-blue-500"
-                        />
-                    </div>
                 </div>
             </div>
 
@@ -962,8 +948,6 @@
                 const targetSize = parseInt(
                     document.getElementById("targetSize").value,
                 );
-                const projectName =
-                    document.getElementById("projectName").value || "Photo";
 
                 results = [];
 
@@ -979,9 +963,9 @@
                             targetSize,
                             exportFormat,
                         );
-                        const dateStr = new Date().toISOString().split("T")[0];
                         const ext = exportFormat === "webp" ? "webp" : "jpg";
-                        const newName = `${projectName.replace(/\s+/g, "-")}_${dateStr}_${String(i + 1).padStart(3, "0")}.${ext}`;
+                        const baseName = file.name.replace(/\.[^/.]+$/, "");
+                        const newName = `${baseName}.${ext}`;
                         result.outputs.compressed = {
                             ...compressed,
                             name: newName,
@@ -1098,25 +1082,33 @@
             async function downloadAll() {
                 const zip = new JSZip();
 
-                results.forEach((result, idx) => {
-                    const folder = zip.folder(`image-${idx + 1}`);
-
+                results.forEach((result) => {
                     if (result.outputs.compressed) {
-                        folder.file(
+                        zip.file(
                             result.outputs.compressed.name,
                             result.outputs.compressed.blob,
                         );
                     }
 
                     if (result.outputs.social) {
-                        const socialFolder = folder.folder("social-media");
+                        const baseName = result.original.name.replace(
+                            /\.[^/.]+$/,
+                            "",
+                        );
+                        const socialFolder = zip.folder(`${baseName}-social`);
                         result.outputs.social.forEach((item) => {
                             socialFolder.file(`${item.key}.webp`, item.blob);
                         });
                     }
 
                     if (result.outputs.favicons) {
-                        const faviconFolder = folder.folder("favicons");
+                        const baseName = result.original.name.replace(
+                            /\.[^/.]+$/,
+                            "",
+                        );
+                        const faviconFolder = zip.folder(
+                            `${baseName}-favicons`,
+                        );
                         result.outputs.favicons.forEach((item) => {
                             faviconFolder.file(item.name, item.blob);
                         });
