@@ -89,7 +89,9 @@
                     <a href="/products/">Products</a>
                     <a href="/tools/">Tools</a>
                     <a href="/about/">About</a>
-                    <a href="/" class="btn-primary">Get Early Access</a>
+                    <button class="btn-primary" onclick="showEmailModal()">
+                        Get Early Access
+                    </button>
                 </div>
                 <button
                     class="hamburger"
@@ -120,7 +122,15 @@
                 <a href="/privacy/">Privacy Policy</a>
             </nav>
             <div class="side-panel-cta">
-                <a href="/" class="btn-primary">Get Early Access</a>
+                <button
+                    class="btn-primary"
+                    onclick="
+                        showEmailModal();
+                        closeSidePanel();
+                    "
+                >
+                    Get Early Access
+                </button>
             </div>
         </aside>
 
@@ -186,10 +196,10 @@
                             <input
                                 type="range"
                                 id="targetSize"
-                                min="50"
+                                min="20"
                                 max="1000"
-                                step="50"
-                                value="250"
+                                step="10"
+                                value="60"
                                 oninput="updateSizeDisplay()"
                                 class="w-40 accent-blue-500"
                             />
@@ -197,9 +207,24 @@
                                 id="sizeDisplay"
                                 class="bg-blue-600 text-white px-3 py-1 rounded font-bold text-sm min-w-[70px] text-center"
                             >
-                                250 KB
+                                60 KB
                             </span>
                         </div>
+                    </div>
+
+                    <div>
+                        <label
+                            class="block text-sm font-semibold mb-2 text-blue-400"
+                        >
+                            Export Format
+                        </label>
+                        <select
+                            id="exportFormat"
+                            class="px-4 py-2 bg-gray-900 border border-gray-600 rounded-lg text-gray-100 text-sm focus:outline-none focus:border-blue-500"
+                        >
+                            <option value="jpeg">JPEG</option>
+                            <option value="webp">WebP</option>
+                        </select>
                     </div>
 
                     <div>
@@ -362,9 +387,74 @@
                     PM4Subs helps masonry contractors manage projects, photos,
                     submittals, and crews.
                 </p>
-                <a href="/" class="btn-primary">Learn More About PM4Subs</a>
+                <button class="btn-primary btn-lg" onclick="showEmailModal()">
+                    Learn More About PM4Subs
+                </button>
             </div>
         </section>
+
+        <!-- Modal -->
+        <div
+            id="emailModal"
+            class="modal-overlay"
+            onclick="closeModalOnOverlay(event)"
+        >
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeEmailModal()">
+                    &times;
+                </button>
+                <h3 class="modal-title">Request Early Access</h3>
+                <form id="waitlistForm2" onsubmit="handleModalSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="modalName"
+                            >Full Name</label
+                        >
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="modalName"
+                            name="name"
+                            required
+                            placeholder="John Smith"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="modalEmail"
+                            >Email Address</label
+                        >
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="modalEmail"
+                            name="email"
+                            required
+                            placeholder="john@company.com"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="modalCompany"
+                            >Company Name (Optional)</label
+                        >
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="modalCompany"
+                            name="company"
+                            placeholder="Your Company"
+                        />
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        Request Access
+                    </button>
+                    <div id="modalSuccessMessage" class="success-message">
+                        Thanks! We'll be in touch soon.
+                    </div>
+                    <p class="form-note">
+                        We'll personally reach out with your invite link
+                    </p>
+                </form>
+            </div>
+        </div>
 
         <!-- Footer -->
         <footer>
@@ -463,8 +553,48 @@
             }
 
             document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") closeSidePanel();
+                if (e.key === "Escape") {
+                    closeSidePanel();
+                    closeEmailModal();
+                }
             });
+
+            function showEmailModal() {
+                document.getElementById("emailModal").classList.add("show");
+            }
+
+            function closeEmailModal() {
+                document.getElementById("emailModal").classList.remove("show");
+            }
+
+            function closeModalOnOverlay(event) {
+                if (event.target.id === "emailModal") {
+                    closeEmailModal();
+                }
+            }
+
+            function handleModalSubmit(event) {
+                event.preventDefault();
+                const name = document.getElementById("modalName").value;
+                const email = document.getElementById("modalEmail").value;
+                const company = document.getElementById("modalCompany").value;
+                const subject = encodeURIComponent(
+                    "PM4Subs Early Access Request",
+                );
+                const body = encodeURIComponent(
+                    `New early access request:\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "Not provided"}\n`,
+                );
+                window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
+                document.getElementById("modalSuccessMessage").style.display =
+                    "block";
+                document.getElementById("waitlistForm2").reset();
+                setTimeout(() => {
+                    closeEmailModal();
+                    document.getElementById(
+                        "modalSuccessMessage",
+                    ).style.display = "none";
+                }, 2000);
+            }
 
             // Tab switching
             function setActiveTab(tab) {
@@ -567,11 +697,56 @@
             }
 
             // Image processing
-            function compressImage(file, maxSizeKB, quality = 0.9) {
+            function compressImage(file, maxSizeKB, format = "jpeg") {
                 return new Promise((resolve) => {
                     const img = new Image();
+                    const mimeType =
+                        format === "webp" ? "image/webp" : "image/jpeg";
 
                     img.onload = () => {
+                        // Binary search for optimal quality at given scale
+                        const findOptimalQuality = (
+                            canvas,
+                            minQ,
+                            maxQ,
+                            callback,
+                        ) => {
+                            if (maxQ - minQ < 0.02) {
+                                // Close enough, use minQ to ensure we're under target
+                                canvas.toBlob(
+                                    (blob) => callback(blob, minQ),
+                                    mimeType,
+                                    minQ,
+                                );
+                                return;
+                            }
+
+                            const midQ = (minQ + maxQ) / 2;
+                            canvas.toBlob(
+                                (blob) => {
+                                    if (blob.size / 1024 <= maxSizeKB) {
+                                        // Under target, try higher quality
+                                        findOptimalQuality(
+                                            canvas,
+                                            midQ,
+                                            maxQ,
+                                            callback,
+                                        );
+                                    } else {
+                                        // Over target, try lower quality
+                                        findOptimalQuality(
+                                            canvas,
+                                            minQ,
+                                            midQ,
+                                            callback,
+                                        );
+                                    }
+                                },
+                                mimeType,
+                                midQ,
+                            );
+                        };
+
                         const tryCompressAtScale = (scale) => {
                             const canvas = document.createElement("canvas");
                             const ctx = canvas.getContext("2d");
@@ -586,37 +761,44 @@
                                 canvas.height,
                             );
 
-                            const tryCompress = (q) => {
-                                canvas.toBlob(
-                                    (blob) => {
-                                        if (blob.size / 1024 <= maxSizeKB) {
-                                            resolve({
-                                                blob,
-                                                quality: q,
-                                                scale: scale,
-                                                originalSize: file.size,
-                                                newSize: blob.size,
-                                            });
-                                        } else if (q > 0.3) {
-                                            tryCompress(q - 0.1);
-                                        } else if (scale > 0.1) {
-                                            tryCompressAtScale(scale * 0.7);
-                                        } else {
-                                            resolve({
-                                                blob,
-                                                quality: q,
-                                                scale: scale,
-                                                originalSize: file.size,
-                                                newSize: blob.size,
-                                            });
-                                        }
-                                    },
-                                    "image/jpeg",
-                                    q,
-                                );
-                            };
-
-                            tryCompress(0.9);
+                            // First check if minimum quality at this scale works
+                            canvas.toBlob(
+                                (minBlob) => {
+                                    if (minBlob.size / 1024 <= maxSizeKB) {
+                                        // Can hit target at this scale, find optimal quality
+                                        findOptimalQuality(
+                                            canvas,
+                                            0.1,
+                                            0.95,
+                                            (blob, quality) => {
+                                                resolve({
+                                                    blob,
+                                                    quality: quality,
+                                                    scale: scale,
+                                                    originalSize: file.size,
+                                                    newSize: blob.size,
+                                                    format: format,
+                                                });
+                                            },
+                                        );
+                                    } else if (scale > 0.05) {
+                                        // Need to scale down more
+                                        tryCompressAtScale(scale * 0.7);
+                                    } else {
+                                        // Can't hit target, return best effort
+                                        resolve({
+                                            blob: minBlob,
+                                            quality: 0.1,
+                                            scale: scale,
+                                            originalSize: file.size,
+                                            newSize: minBlob.size,
+                                            format: format,
+                                        });
+                                    }
+                                },
+                                mimeType,
+                                0.1,
+                            );
                         };
 
                         tryCompressAtScale(1);
@@ -690,10 +872,70 @@
                 return results;
             }
 
+            function resizeImageWebP(file, width, height, cover = true) {
+                return new Promise((resolve) => {
+                    const canvas = document.createElement("canvas");
+                    const ctx = canvas.getContext("2d");
+                    const img = new Image();
+
+                    img.onload = () => {
+                        canvas.width = width;
+                        canvas.height = height;
+
+                        if (cover) {
+                            const scale = Math.max(
+                                width / img.width,
+                                height / img.height,
+                            );
+                            const x = (width - img.width * scale) / 2;
+                            const y = (height - img.height * scale) / 2;
+                            ctx.drawImage(
+                                img,
+                                x,
+                                y,
+                                img.width * scale,
+                                img.height * scale,
+                            );
+                        } else {
+                            const scale = Math.min(
+                                width / img.width,
+                                height / img.height,
+                            );
+                            const x = (width - img.width * scale) / 2;
+                            const y = (height - img.height * scale) / 2;
+                            ctx.fillStyle = "transparent";
+                            ctx.fillRect(0, 0, width, height);
+                            ctx.drawImage(
+                                img,
+                                x,
+                                y,
+                                img.width * scale,
+                                img.height * scale,
+                            );
+                        }
+
+                        canvas.toBlob(
+                            (blob) => {
+                                resolve(blob);
+                            },
+                            "image/webp",
+                            0.9,
+                        );
+                    };
+
+                    img.src = URL.createObjectURL(file);
+                });
+            }
+
             async function generateSocialMedia(file) {
                 const results = [];
                 for (const { name, width, height, key } of socialMediaSizes) {
-                    const blob = await resizeImage(file, width, height, true);
+                    const blob = await resizeImageWebP(
+                        file,
+                        width,
+                        height,
+                        true,
+                    );
                     results.push({
                         name,
                         blob,
@@ -730,12 +972,16 @@
                     const result = { original: file, outputs: {} };
 
                     if (activeTab === "compress" || activeTab === "all") {
+                        const exportFormat =
+                            document.getElementById("exportFormat").value;
                         const compressed = await compressImage(
                             file,
                             targetSize,
+                            exportFormat,
                         );
                         const dateStr = new Date().toISOString().split("T")[0];
-                        const newName = `${projectName.replace(/\s+/g, "-")}_${dateStr}_${String(i + 1).padStart(3, "0")}.jpg`;
+                        const ext = exportFormat === "webp" ? "webp" : "jpg";
+                        const newName = `${projectName.replace(/\s+/g, "-")}_${dateStr}_${String(i + 1).padStart(3, "0")}.${ext}`;
                         result.outputs.compressed = {
                             ...compressed,
                             name: newName,
@@ -804,7 +1050,7 @@
                                 ${result.outputs.social
                                     .map(
                                         (item, i) => `
-                                    <button onclick="downloadBlob(results[${idx}].outputs.social[${i}].blob, '${item.key}.png')" class="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-left hover:border-gray-600">
+                                    <button onclick="downloadBlob(results[${idx}].outputs.social[${i}].blob, '${item.key}.webp')" class="px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-left hover:border-gray-600">
                                         <div class="font-medium">${item.name}</div>
                                         <div class="text-xs text-gray-400">${item.dimensions}</div>
                                     </button>
@@ -865,7 +1111,7 @@
                     if (result.outputs.social) {
                         const socialFolder = folder.folder("social-media");
                         result.outputs.social.forEach((item) => {
-                            socialFolder.file(`${item.key}.png`, item.blob);
+                            socialFolder.file(`${item.key}.webp`, item.blob);
                         });
                     }
 

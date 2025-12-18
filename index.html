@@ -6,7 +6,7 @@
         <title>PM4Subs – Project Management Software for Subcontractors</title>
         <meta
             name="description"
-            content="PM4Subs is simple project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place instead of chasing emails, texts, and spreadsheets."
+            content="Project management software for subcontractors. Track bids, jobs, specs, and tools in one place. Built by a sub, for subs."
         />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://pm4subs.com/" />
@@ -79,8 +79,14 @@
                         "name": "PM4Subs",
                         "url": "https://pm4subs.com/",
                         "description": "Project management software built by a subcontractor, for subcontractors. Track bids, jobs, specs, field tasks, and tools in one place.",
-                        "logo": "https://pm4subs.com/screenshots/projects-dashboard.png",
-                        "founder": "Ryan Shanley",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": "https://pm4subs.com/screenshots/projects-dashboard.png"
+                        },
+                        "founder": {
+                            "@type": "Person",
+                            "name": "Ryan Shanley"
+                        },
                         "sameAs": ["https://www.linkedin.com/company/pm4subs"]
                     },
                     {
@@ -92,7 +98,9 @@
                         "offers": {
                             "@type": "Offer",
                             "url": "https://pm4subs.com/",
-                            "category": "subscription"
+                            "price": "0",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/PreOrder"
                         },
                         "publisher": {
                             "@id": "https://pm4subs.com/#org"
@@ -225,7 +233,7 @@
         </section>
 
         <!-- Pain Points Section -->
-        <section class="section">
+        <section id="problems" class="section">
             <div class="container">
                 <h2 class="section-title">Sound Familiar?</h2>
                 <p class="section-subtitle">
@@ -303,7 +311,7 @@
         </section>
 
         <!-- Who PM4Subs Is For -->
-        <section class="section">
+        <section id="who-its-for" class="section">
             <div class="container">
                 <h2 class="section-title">Who PM4Subs Is For</h2>
                 <p class="section-subtitle">
@@ -335,7 +343,7 @@
         </section>
 
         <!-- Everything in One Place Section -->
-        <section class="section">
+        <section id="features" class="section">
             <div class="container">
                 <h2 class="section-title">Everything in One Place</h2>
                 <p class="section-subtitle">
@@ -393,7 +401,7 @@
         </section>
 
         <!-- How PM4Subs Fits Into Your Day -->
-        <section class="section section-alt">
+        <section id="how-it-works" class="section section-alt">
             <div class="container">
                 <h2 class="section-title">How PM4Subs Fits Into Your Day</h2>
                 <div class="grid-3">
@@ -448,7 +456,7 @@
         </section>
 
         <!-- Screenshots Section -->
-        <section class="screenshots">
+        <section id="screenshots" class="screenshots">
             <div class="container">
                 <h2 class="section-title">See It in Action</h2>
 
@@ -518,7 +526,7 @@
         </section>
 
         <!-- FAQ Section -->
-        <section class="section">
+        <section id="faq" class="section">
             <div class="container">
                 <h2 class="section-title">FAQs</h2>
 

@@ -19,6 +19,22 @@
         />
         <meta property="og:url" content="https://pm4subs.com/privacy/" />
         <meta property="og:type" content="website" />
+        <meta
+            property="og:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
+
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy | PM4Subs" />
+        <meta
+            name="twitter:description"
+            content="Privacy Policy for PM4Subs project management software."
+        />
+        <meta
+            name="twitter:image"
+            content="https://pm4subs.com/screenshots/projects-dashboard.png"
+        />
 
         <!-- Tailwind CSS CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
@@ -40,7 +56,9 @@
                     <a href="/products/">Products</a>
                     <a href="/tools/">Tools</a>
                     <a href="/about/">About</a>
-                    <a href="/" class="btn-primary">Get Early Access</a>
+                    <button class="btn-primary" onclick="showEmailModal()">
+                        Get Early Access
+                    </button>
                 </div>
                 <button
                     class="hamburger"
@@ -71,7 +89,15 @@
                 <a href="/privacy/">Privacy Policy</a>
             </nav>
             <div class="side-panel-cta">
-                <a href="/" class="btn-primary">Get Early Access</a>
+                <button
+                    class="btn-primary"
+                    onclick="
+                        showEmailModal();
+                        closeSidePanel();
+                    "
+                >
+                    Get Early Access
+                </button>
             </div>
         </aside>
 
@@ -170,6 +196,67 @@
             </p>
         </div>
 
+        <!-- Modal -->
+        <div
+            id="emailModal"
+            class="modal-overlay"
+            onclick="closeModalOnOverlay(event)"
+        >
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <button class="modal-close" onclick="closeEmailModal()">
+                    &times;
+                </button>
+                <h3 class="modal-title">Request Early Access</h3>
+                <form id="waitlistForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name</label>
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="name"
+                            name="name"
+                            required
+                            placeholder="John Smith"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email"
+                            >Email Address</label
+                        >
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            placeholder="john@company.com"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="company"
+                            >Company Name (Optional)</label
+                        >
+                        <input
+                            class="form-input"
+                            type="text"
+                            id="company"
+                            name="company"
+                            placeholder="Your Company"
+                        />
+                    </div>
+                    <button type="submit" class="btn-primary w-full">
+                        Request Access
+                    </button>
+                    <div id="successMessage" class="success-message">
+                        Thanks! We'll be in touch soon.
+                    </div>
+                    <p class="form-note">
+                        We'll personally reach out with your invite link
+                    </p>
+                </form>
+            </div>
+        </div>
+
         <!-- Footer -->
         <footer>
             <div class="container">
@@ -207,8 +294,47 @@
                 document.body.style.overflow = "";
             }
             document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") closeSidePanel();
+                if (e.key === "Escape") {
+                    closeSidePanel();
+                    closeEmailModal();
+                }
             });
+
+            function showEmailModal() {
+                document.getElementById("emailModal").classList.add("show");
+            }
+
+            function closeEmailModal() {
+                document.getElementById("emailModal").classList.remove("show");
+            }
+
+            function closeModalOnOverlay(event) {
+                if (event.target.id === "emailModal") {
+                    closeEmailModal();
+                }
+            }
+
+            function handleSubmit(event) {
+                event.preventDefault();
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const company = document.getElementById("company").value;
+                const subject = encodeURIComponent(
+                    "PM4Subs Early Access Request",
+                );
+                const body = encodeURIComponent(
+                    `New early access request:\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "Not provided"}\n`,
+                );
+                window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
+                document.getElementById("successMessage").style.display =
+                    "block";
+                document.getElementById("waitlistForm").reset();
+                setTimeout(() => {
+                    closeEmailModal();
+                    document.getElementById("successMessage").style.display =
+                        "none";
+                }, 2000);
+            }
         </script>
     </body>
 </html>
