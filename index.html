@@ -68,6 +68,61 @@
         <!-- Design System -->
         <link rel="stylesheet" href="design-system.css" />
 
+        <!-- Brand Logo Styling -->
+        <style>
+            /* Brand Nav Styling */
+            .nav {
+                background: #0c1220;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-logo {
+                font-family: "Syne", sans-serif;
+                font-weight: 700;
+                font-size: 26px;
+                letter-spacing: -0.5px;
+                text-decoration: none;
+            }
+
+            .nav-logo .pm,
+            .nav-logo .subs {
+                color: #9ca3af;
+            }
+
+            .nav-logo .four {
+                color: #3b82f6;
+            }
+
+            .nav-links a {
+                color: #64748b;
+            }
+
+            .nav-links a:hover {
+                color: #fff;
+            }
+
+            .nav-links .btn-primary {
+                background: #f97316;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 6px;
+            }
+
+            .nav-links .btn-primary:hover {
+                background: #ea580c;
+            }
+
+            /* Hero background wrapper */
+            .hero-wrapper {
+                background: #0c1220;
+            }
+
+            /* Hamburger for dark nav */
+            .hamburger span {
+                background-color: #9ca3af;
+            }
+        </style>
+
         <!-- JSON-LD Structured Data -->
         <script type="application/ld+json">
             {
@@ -168,7 +223,10 @@
         <!-- Navigation -->
         <nav class="nav">
             <div class="nav-container">
-                <a href="/" class="nav-logo">PM4Subs</a>
+                <a href="/" class="nav-logo"
+                    ><span class="pm">PM</span><span class="four">4</span
+                    ><span class="subs">Subs</span></a
+                >
                 <div class="nav-links">
                     <a href="/products/">Products</a>
                     <a href="/tools/">Tools</a>
@@ -219,18 +277,84 @@
         </aside>
 
         <!-- Hero Section -->
-        <section class="hero">
-            <h1 class="hero-title">
-                Project Management Software Built for Subcontractors
-            </h1>
-            <p class="hero-subtitle">
-                PM4Subs keeps your bids, jobs, specs, field tasks, and tools in
-                one place. No more digging through emails, group texts, and
-                random spreadsheets to figure out where a job is at. It's simple
-                project management software built by a subcontractor, for
-                subcontractors.
-            </p>
-        </section>
+        <div class="hero-wrapper">
+            <section class="hero">
+                <div class="hero-text">
+                    <div class="eyebrow">Built by a subcontractor</div>
+                    <h1 class="hero-title">
+                        Stop fielding texts
+                        <span class="highlight">while you're driving.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Every question has the same answer:
+                        <strong>"It's in PM4Subs."</strong>
+                        RFIs, photos, specs, schedules — one place, accessible
+                        to everyone who needs it.
+                    </p>
+
+                    <div class="cta-row">
+                        <button class="btn-primary" onclick="showEmailModal()">
+                            Get on the Beta List →
+                        </button>
+                        <a href="#how-it-works" class="btn-secondary"
+                            >See how it works</a
+                        >
+                    </div>
+
+                    <div class="credential">
+                        <div class="credential-icon">🧱</div>
+                        <div class="credential-text">
+                            <strong>Built by working contractors</strong>
+                            Running crews in Oregon & Wyoming
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="message-stack">
+                        <div class="message">
+                            <div class="sender">Office</div>
+                            <div class="text">
+                                Is the budget done for Riverside?
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="sender">Estimator</div>
+                            <div class="text">
+                                Which one? The school or the apartments?
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="sender">Office</div>
+                            <div class="text">
+                                The school. Bid's due Thursday
+                            </div>
+                        </div>
+                        <div class="message">
+                            <div class="sender">Office</div>
+                            <div class="text">
+                                Also did you see the addendum?
+                            </div>
+                        </div>
+                        <div class="message solution">
+                            <div class="sender">PM4Subs</div>
+                            <div class="text">
+                                Riverside Elementary → Budget uploaded
+                                yesterday.<br />Addendum #2 added Jan 7. Bid due
+                                Jan 11.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="driving-note">
+                        <span class="icon">🚗</span>
+                        <span class="text"
+                            >These always come when you're on the highway</span
+                        >
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- Pain Points Section -->
         <section id="problems" class="section">
@@ -734,7 +858,7 @@
         <footer class="footer">
             <div class="container">
                 <p>
-                    &copy; 2025 PM4Subs. All rights reserved. |
+                    &copy; 2026 PM4Subs. All rights reserved. |
                     <a href="/privacy/">Privacy Policy</a>
                 </p>
                 <p style="margin-top: 10px">
