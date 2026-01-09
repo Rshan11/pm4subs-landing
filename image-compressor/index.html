@@ -56,6 +56,9 @@
         <!-- Design System -->
         <link rel="stylesheet" href="../design-system.css" />
 
+        <!-- Shared Header -->
+        <script src="../shared-header.js"></script>
+
         <style>
             .drop-zone {
                 border: 3px dashed rgba(100, 116, 139, 0.5);
@@ -81,58 +84,9 @@
         </style>
     </head>
     <body>
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="nav-container">
-                <a href="/" class="nav-logo">PM4Subs</a>
-                <div class="nav-links">
-                    <a href="/products/">Products</a>
-                    <a href="/tools/">Tools</a>
-                    <a href="/about/">About</a>
-                    <button class="btn-primary" onclick="showEmailModal()">
-                        Get Early Access
-                    </button>
-                </div>
-                <button
-                    class="hamburger"
-                    onclick="toggleSidePanel()"
-                    aria-label="Toggle menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </nav>
-
-        <!-- Side Panel -->
-        <div class="side-panel-overlay" onclick="closeSidePanel()"></div>
-        <aside class="side-panel">
-            <nav class="side-panel-nav">
-                <span class="nav-section-title">Navigate</span>
-                <a href="/">Home</a>
-                <a href="/products/">Products</a>
-                <a href="/tools/">Tools</a>
-                <a href="/about/">About</a>
-
-                <span class="nav-section-title">Free Tools</span>
-                <a href="/image-compressor/">Image Compressor</a>
-
-                <span class="nav-section-title">Legal</span>
-                <a href="/privacy/">Privacy Policy</a>
-            </nav>
-            <div class="side-panel-cta">
-                <button
-                    class="btn-primary"
-                    onclick="
-                        showEmailModal();
-                        closeSidePanel();
-                    "
-                >
-                    Get Early Access
-                </button>
-            </div>
-        </aside>
+        <script>
+            initHeader();
+        </script>
 
         <!-- Main Content -->
         <main class="max-w-5xl mx-auto px-4 py-10">
@@ -512,38 +466,6 @@
                 { size: 192, name: "android-chrome-192x192.png" },
                 { size: 512, name: "android-chrome-512x512.png" },
             ];
-
-            // Navigation
-            function toggleSidePanel() {
-                const sidePanel = document.querySelector(".side-panel");
-                const overlay = document.querySelector(".side-panel-overlay");
-                const hamburger = document.querySelector(".hamburger");
-                sidePanel.classList.toggle("open");
-                overlay.classList.toggle("show");
-                hamburger.classList.toggle("active");
-                document.body.style.overflow = sidePanel.classList.contains(
-                    "open",
-                )
-                    ? "hidden"
-                    : "";
-            }
-
-            function closeSidePanel() {
-                const sidePanel = document.querySelector(".side-panel");
-                const overlay = document.querySelector(".side-panel-overlay");
-                const hamburger = document.querySelector(".hamburger");
-                sidePanel.classList.remove("open");
-                overlay.classList.remove("show");
-                hamburger.classList.remove("active");
-                document.body.style.overflow = "";
-            }
-
-            document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    closeSidePanel();
-                    closeEmailModal();
-                }
-            });
 
             function showEmailModal() {
                 document.getElementById("emailModal").classList.add("show");
