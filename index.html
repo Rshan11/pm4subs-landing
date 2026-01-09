@@ -855,37 +855,66 @@
         */
 
             // Handle form submission
-            function handleSubmit(event) {
+            async function handleSubmit(event) {
                 event.preventDefault();
+
+                const submitBtn = event.target.querySelector(
+                    'button[type="submit"]',
+                );
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = "Submitting...";
+                submitBtn.disabled = true;
 
                 const name = document.getElementById("name").value;
                 const email = document.getElementById("email").value;
                 const company = document.getElementById("company").value;
 
-                // mailto approach (works immediately)
-                const subject = encodeURIComponent(
-                    "PM4Subs Early Access Request",
-                );
-                const body = encodeURIComponent(
-                    `New early access request:\n\n` +
-                        `Name: ${name}\n` +
-                        `Email: ${email}\n` +
-                        `Company: ${company || "Not provided"}\n`,
-                );
+                try {
+                    const response = await fetch(
+                        "https://muxjcyckyxviqjpmvcri.supabase.co/functions/v1/waitlist-signup",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                name,
+                                email,
+                                company,
+                                source: "PM4Subs Landing Page",
+                            }),
+                        },
+                    );
 
-                window.location.href = `mailto:hello@pm4subs.com?subject=${subject}&body=${body}`;
+                    const data = await response.json();
 
-                // Show success message
-                document.getElementById("successMessage").style.display =
-                    "block";
-                document.getElementById("waitlistForm").reset();
+                    if (data.success) {
+                        document.getElementById(
+                            "successMessage",
+                        ).style.display = "block";
+                        document.getElementById("waitlistForm").reset();
 
-                // Close modal after 2 seconds
-                setTimeout(() => {
-                    closeEmailModal();
-                    document.getElementById("successMessage").style.display =
-                        "none";
-                }, 2000);
+                        setTimeout(() => {
+                            closeEmailModal();
+                            document.getElementById(
+                                "successMessage",
+                            ).style.display = "none";
+                        }, 2000);
+                    } else {
+                        alert(
+                            data.error ||
+                                "Something went wrong. Please try again.",
+                        );
+                    }
+                } catch (error) {
+                    console.error("Submission error:", error);
+                    alert(
+                        "Something went wrong. Please try again or email us at hello@pm4subs.com",
+                    );
+                } finally {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }
             }
         </script>
     </body>
