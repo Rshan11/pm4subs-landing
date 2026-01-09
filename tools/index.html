@@ -55,6 +55,293 @@
 
         <!-- Shared Header -->
         <script src="../shared-header.js"></script>
+
+        <style>
+            /* Tools Page Hero */
+            .tools-hero {
+                background: #0c1220;
+                padding: 100px 24px 80px;
+                text-align: center;
+            }
+
+            .tools-hero .eyebrow {
+                font-family: "Syne", sans-serif;
+                font-size: 11px;
+                color: #22c55e;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                margin-bottom: 20px;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .tools-hero .eyebrow::before,
+            .tools-hero .eyebrow::after {
+                content: "";
+                width: 24px;
+                height: 1px;
+                background: #22c55e;
+            }
+
+            .tools-hero h1 {
+                font-family: "Syne", sans-serif;
+                font-size: clamp(36px, 5vw, 56px);
+                font-weight: 700;
+                color: #f1f5f9;
+                margin-bottom: 20px;
+                letter-spacing: -1px;
+            }
+
+            .tools-hero h1 .highlight {
+                color: #22c55e;
+            }
+
+            .tools-hero p {
+                font-size: 18px;
+                color: #94a3b8;
+                max-width: 550px;
+                margin: 0 auto;
+                line-height: 1.7;
+            }
+
+            /* Free Badge */
+            .free-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(34, 197, 94, 0.15);
+                border: 1px solid rgba(34, 197, 94, 0.3);
+                color: #22c55e;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 13px;
+                font-weight: 600;
+                margin-bottom: 30px;
+            }
+
+            .free-badge::before {
+                content: "✓";
+            }
+
+            /* Tool Card */
+            .tool-card {
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                padding: 32px;
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            .tool-card.revealed {
+                animation: revealCard 0.6s ease forwards;
+            }
+
+            .tool-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .tool-card:hover {
+                transform: translateY(-8px);
+                border-color: rgba(34, 197, 94, 0.4);
+                box-shadow: 0 20px 60px rgba(34, 197, 94, 0.15);
+            }
+
+            .tool-card:hover::before {
+                opacity: 1;
+            }
+
+            .tool-card-icon {
+                width: 72px;
+                height: 72px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(34, 197, 94, 0.2) 0%,
+                    rgba(34, 197, 94, 0.05) 100%
+                );
+                border: 1px solid rgba(34, 197, 94, 0.3);
+                border-radius: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 36px;
+                margin-bottom: 24px;
+                transition: all 0.3s ease;
+            }
+
+            .tool-card:hover .tool-card-icon {
+                transform: scale(1.05);
+                background: linear-gradient(
+                    135deg,
+                    rgba(34, 197, 94, 0.3) 0%,
+                    rgba(34, 197, 94, 0.1) 100%
+                );
+            }
+
+            .tool-card h2 {
+                font-family: "Syne", sans-serif;
+                font-size: 24px;
+                font-weight: 700;
+                color: #f1f5f9;
+                margin-bottom: 12px;
+            }
+
+            .tool-card p {
+                font-size: 15px;
+                color: #94a3b8;
+                line-height: 1.7;
+                margin-bottom: 24px;
+            }
+
+            .tool-card-features {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 24px;
+            }
+
+            .tool-card-feature {
+                font-size: 12px;
+                color: #64748b;
+                background: rgba(255, 255, 255, 0.05);
+                padding: 6px 12px;
+                border-radius: 6px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .tool-card-cta {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 14px 28px;
+                background: #22c55e;
+                color: #fff;
+                border-radius: 10px;
+                font-weight: 600;
+                font-size: 15px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .tool-card-cta:hover {
+                background: #16a34a;
+                transform: translateY(-2px);
+                box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+            }
+
+            .tool-card-cta svg {
+                width: 18px;
+                height: 18px;
+                transition: transform 0.3s ease;
+            }
+
+            .tool-card-cta:hover svg {
+                transform: translateX(4px);
+            }
+
+            /* Tools Grid */
+            .tools-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+                gap: 24px;
+            }
+
+            @media (max-width: 400px) {
+                .tools-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* Why Free Section */
+            .why-free-card {
+                max-width: 700px;
+                margin: 0 auto;
+                background: #1e293b;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                overflow: hidden;
+            }
+
+            .why-free-header {
+                padding: 14px 20px;
+                background: rgba(0, 0, 0, 0.2);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .why-free-icon {
+                width: 28px;
+                height: 28px;
+                background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                color: white;
+            }
+
+            .why-free-label {
+                font-size: 12px;
+                color: #22c55e;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .why-free-body {
+                padding: 24px;
+            }
+
+            .why-free-body h3 {
+                font-family: "Syne", sans-serif;
+                font-size: 20px;
+                font-weight: 700;
+                color: #f1f5f9;
+                margin-bottom: 12px;
+            }
+
+            .why-free-body p {
+                font-size: 15px;
+                color: #94a3b8;
+                line-height: 1.7;
+            }
+
+            .privacy-note {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-top: 20px;
+                padding: 14px 18px;
+                background: rgba(34, 197, 94, 0.1);
+                border: 1px solid rgba(34, 197, 94, 0.2);
+                border-radius: 10px;
+            }
+
+            .privacy-note-icon {
+                font-size: 20px;
+            }
+
+            .privacy-note-text {
+                font-size: 14px;
+                color: #22c55e;
+                font-weight: 500;
+            }
+        </style>
     </head>
     <body>
         <script>
@@ -62,57 +349,142 @@
         </script>
 
         <!-- Hero Section -->
-        <section class="hero">
-            <h1>Free Tools for Contractors</h1>
+        <section class="tools-hero">
+            <div class="eyebrow">100% Free</div>
+            <h1>Free Tools for <span class="highlight">Contractors</span></h1>
             <p>
                 Practical tools built from real jobsite experience. No signup
                 required. Everything runs in your browser.
             </p>
+            <div class="free-badge" style="margin-top: 24px">
+                No account needed
+            </div>
         </section>
 
         <!-- Tools Grid -->
-        <section class="section">
-            <div class="container">
-                <div class="feature-grid">
-                    <a
-                        href="/image-compressor/"
-                        class="card"
-                        style="text-decoration: none; color: inherit"
-                    >
-                        <div class="text-4xl mb-4">🖼️</div>
-                        <h2>Image Compressor</h2>
-                        <p>
-                            Compress photos to target file sizes, generate
-                            social media kits, and create favicon packages.
-                            Perfect for website updates and project
-                            documentation.
-                        </p>
-                        <span class="text-blue-400 mt-4 inline-block"
-                            >Use Tool →</span
+        <div class="section-dark">
+            <section class="section">
+                <div class="container">
+                    <div class="tools-grid">
+                        <!-- Image Compressor -->
+                        <div class="tool-card">
+                            <div class="tool-card-icon">🖼️</div>
+                            <h2>Image Compressor</h2>
+                            <p>
+                                Compress jobsite photos to target file sizes,
+                                generate social media kits for your company, and
+                                create favicon packages for your website. All in
+                                one tool.
+                            </p>
+                            <div class="tool-card-features">
+                                <span class="tool-card-feature"
+                                    >Target File Size</span
+                                >
+                                <span class="tool-card-feature"
+                                    >Social Media Kit</span
+                                >
+                                <span class="tool-card-feature"
+                                    >Favicon Package</span
+                                >
+                                <span class="tool-card-feature"
+                                    >Batch Processing</span
+                                >
+                            </div>
+                            <a class="tool-card-cta" href="/image-compressor/">
+                                Use Tool Free
+                                <svg
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
+
+                        <!-- More tools coming soon placeholder -->
+                        <div
+                            class="tool-card"
+                            style="opacity: 0.6; pointer-events: none"
                         >
-                    </a>
+                            <div
+                                class="tool-card-icon"
+                                style="
+                                    background: rgba(100, 116, 139, 0.2);
+                                    border-color: rgba(100, 116, 139, 0.3);
+                                "
+                            >
+                                🛠️
+                            </div>
+                            <h2>More Tools Coming</h2>
+                            <p>
+                                We're building more free tools based on what
+                                contractors actually need. Have an idea? Let us
+                                know what would save you time in the field.
+                            </p>
+                            <div class="tool-card-features">
+                                <span class="tool-card-feature"
+                                    >Coming Soon</span
+                                >
+                            </div>
+                            <span
+                                class="tool-card-cta"
+                                style="background: #475569; cursor: default"
+                            >
+                                Coming Soon
+                            </span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <!-- Why Free Section -->
-        <section class="section" style="background: rgba(59, 130, 246, 0.05)">
-            <div class="container text-center">
-                <h2 class="text-2xl font-bold mb-4">Why Are These Free?</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">
-                    We built these tools to solve our own problems in the field.
-                    Sharing them helps other contractors and introduces them to
-                    PM4Subs. Everything processes locally in your browser - your
-                    files never leave your device.
-                </p>
-            </div>
-        </section>
+        <div class="section-darker">
+            <section class="section">
+                <div class="container">
+                    <h2 class="section-title">
+                        Why Are These
+                        <span class="highlight" style="color: #22c55e"
+                            >Free?</span
+                        >
+                    </h2>
+
+                    <div class="why-free-card">
+                        <div class="why-free-header">
+                            <div class="why-free-icon">💡</div>
+                            <span class="why-free-label">Our Philosophy</span>
+                        </div>
+                        <div class="why-free-body">
+                            <h3>Built to solve our own problems</h3>
+                            <p>
+                                We built these tools because we needed them
+                                ourselves. Sharing them helps other contractors
+                                and introduces them to PM4Subs. It's a win-win.
+                            </p>
+                            <div class="privacy-note">
+                                <span class="privacy-note-icon">🔒</span>
+                                <span class="privacy-note-text">
+                                    Everything processes locally in your
+                                    browser. Your files never leave your device.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- CTA Section -->
         <section class="cta-section">
             <div class="container">
-                <h2>Need More Than Free Tools?</h2>
-                <p>
+                <h2 class="cta-title">Need More Than Free Tools?</h2>
+                <p class="cta-subtitle">
                     PM4Subs helps subcontractors manage projects, photos,
                     submittals, and crews in one place.
                 </p>
@@ -184,21 +556,15 @@
         </div>
 
         <!-- Footer -->
-        <footer>
+        <footer class="footer">
             <div class="container">
                 <p>
-                    &copy; 2025 PM4Subs. All rights reserved. |
+                    &copy; 2026 PM4Subs. All rights reserved. |
                     <a href="/privacy/">Privacy Policy</a>
                 </p>
-                <p class="mt-2">
+                <p style="margin-top: 10px">
                     Questions?
                     <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
-                </p>
-                <p class="mt-2">
-                    <a href="/"
-                        >Back to PM4Subs project management for
-                        subcontractors</a
-                    >
                 </p>
             </div>
         </footer>
@@ -278,6 +644,33 @@
                     submitBtn.disabled = false;
                 }
             }
+
+            // Scroll reveal animation
+            function initScrollReveal() {
+                const revealElements = document.querySelectorAll(".tool-card");
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry, index) => {
+                            if (entry.isIntersecting) {
+                                const delay = index * 150;
+                                setTimeout(() => {
+                                    entry.target.classList.add("revealed");
+                                }, delay);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: "0px 0px -50px 0px",
+                    },
+                );
+
+                revealElements.forEach((el) => observer.observe(el));
+            }
+
+            document.addEventListener("DOMContentLoaded", initScrollReveal);
         </script>
     </body>
 </html>

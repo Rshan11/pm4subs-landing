@@ -57,6 +57,440 @@
 
         <!-- Shared Header -->
         <script src="../shared-header.js"></script>
+
+        <style>
+            /* About Page Hero */
+            .about-hero {
+                background: linear-gradient(
+                    135deg,
+                    #0c1220 0%,
+                    #1a1a2e 50%,
+                    #16213e 100%
+                );
+                padding: 120px 24px 80px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .about-hero::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 600px;
+                height: 600px;
+                background: radial-gradient(
+                    circle,
+                    rgba(249, 115, 22, 0.08) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+
+            .about-hero .eyebrow {
+                display: inline-block;
+                background: rgba(249, 115, 22, 0.15);
+                color: #f97316;
+                padding: 8px 16px;
+                border-radius: 20px;
+                font-size: 0.875rem;
+                font-weight: 600;
+                margin-bottom: 24px;
+                letter-spacing: 0.5px;
+            }
+
+            .about-hero h1 {
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 16px;
+                line-height: 1.2;
+            }
+
+            .about-hero h1 .highlight {
+                color: #f97316;
+            }
+
+            .about-hero .subtitle {
+                font-size: 1.25rem;
+                color: rgba(255, 255, 255, 0.7);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            /* Story Section */
+            .story-section {
+                background: #080d16;
+                padding: 80px 24px;
+            }
+
+            .story-container {
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            /* Founder Card */
+            .founder-card {
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                border: 1px solid rgba(249, 115, 22, 0.2);
+                border-radius: 24px;
+                padding: 40px;
+                margin-bottom: 48px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .founder-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, #f97316, #fb923c);
+            }
+
+            .founder-header {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                margin-bottom: 24px;
+            }
+
+            .founder-avatar {
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #f97316, #ea580c);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.75rem;
+                box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+            }
+
+            .founder-info h3 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #fff;
+                margin-bottom: 4px;
+            }
+
+            .founder-info span {
+                font-size: 0.875rem;
+                color: rgba(255, 255, 255, 0.5);
+            }
+
+            .founder-quote {
+                font-size: 1.125rem;
+                color: rgba(255, 255, 255, 0.85);
+                line-height: 1.8;
+                font-style: italic;
+                position: relative;
+                padding-left: 24px;
+                border-left: 3px solid #f97316;
+            }
+
+            /* Story Cards */
+            .story-card {
+                background: #1e293b;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                padding: 0;
+                margin-bottom: 24px;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.6s ease;
+            }
+
+            .story-card.revealed {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .story-card:hover {
+                border-color: rgba(249, 115, 22, 0.3);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            }
+
+            .story-card-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 16px 24px;
+                background: rgba(0, 0, 0, 0.3);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .story-card-icon {
+                width: 36px;
+                height: 36px;
+                background: rgba(249, 115, 22, 0.15);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.125rem;
+            }
+
+            .story-card-title {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: #fff;
+            }
+
+            .story-card-body {
+                padding: 24px;
+            }
+
+            .story-card-body p {
+                color: rgba(255, 255, 255, 0.7);
+                line-height: 1.7;
+                margin-bottom: 16px;
+            }
+
+            .story-card-body p:last-child {
+                margin-bottom: 0;
+            }
+
+            /* Values List */
+            .values-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            @media (max-width: 480px) {
+                .values-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            .value-item {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                background: rgba(249, 115, 22, 0.1);
+                padding: 14px 18px;
+                border-radius: 12px;
+                border: 1px solid rgba(249, 115, 22, 0.15);
+            }
+
+            .value-item .icon {
+                font-size: 1.25rem;
+            }
+
+            .value-item span {
+                color: #fff;
+                font-weight: 500;
+            }
+
+            /* Mission Section */
+            .mission-section {
+                background: #0c1220;
+                padding: 80px 24px;
+            }
+
+            .mission-container {
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .mission-title {
+                font-size: clamp(1.75rem, 4vw, 2.25rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 24px;
+            }
+
+            .mission-title .highlight {
+                color: #f97316;
+            }
+
+            .mission-text {
+                font-size: 1.125rem;
+                color: rgba(255, 255, 255, 0.7);
+                line-height: 1.8;
+                max-width: 700px;
+                margin: 0 auto 48px;
+            }
+
+            /* Principles */
+            .principles-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 24px;
+                text-align: left;
+            }
+
+            .principle-card {
+                background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 16px;
+                padding: 28px;
+                transition: all 0.3s ease;
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            .principle-card.revealed {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .principle-card:hover {
+                border-color: rgba(249, 115, 22, 0.3);
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .principle-icon {
+                width: 48px;
+                height: 48px;
+                background: rgba(249, 115, 22, 0.15);
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
+
+            .principle-card h4 {
+                font-size: 1.125rem;
+                font-weight: 600;
+                color: #fff;
+                margin-bottom: 8px;
+            }
+
+            .principle-card p {
+                font-size: 0.938rem;
+                color: rgba(255, 255, 255, 0.6);
+                line-height: 1.6;
+            }
+
+            /* Thanks Section */
+            .thanks-section {
+                background: #080d16;
+                padding: 60px 24px;
+                text-align: center;
+            }
+
+            .thanks-message {
+                background: linear-gradient(
+                    135deg,
+                    rgba(249, 115, 22, 0.1) 0%,
+                    rgba(249, 115, 22, 0.05) 100%
+                );
+                border: 1px solid rgba(249, 115, 22, 0.2);
+                border-radius: 16px;
+                padding: 32px;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .thanks-message p {
+                font-size: 1.125rem;
+                color: rgba(255, 255, 255, 0.8);
+                margin-bottom: 8px;
+            }
+
+            .thanks-message .signature {
+                color: #f97316;
+                font-weight: 600;
+            }
+
+            /* CTA Section */
+            .about-cta {
+                background: linear-gradient(135deg, #0c1220 0%, #1a1a2e 100%);
+                padding: 80px 24px;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .about-cta::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 500px;
+                height: 500px;
+                background: radial-gradient(
+                    circle,
+                    rgba(249, 115, 22, 0.12) 0%,
+                    transparent 60%
+                );
+                pointer-events: none;
+            }
+
+            .about-cta h2 {
+                font-size: clamp(1.75rem, 4vw, 2.25rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 16px;
+                position: relative;
+            }
+
+            .about-cta p {
+                font-size: 1.125rem;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 32px;
+                position: relative;
+            }
+
+            .cta-button {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                background: linear-gradient(135deg, #f97316, #ea580c);
+                color: #fff;
+                padding: 16px 32px;
+                border-radius: 12px;
+                font-size: 1.125rem;
+                font-weight: 600;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+                position: relative;
+            }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 32px rgba(249, 115, 22, 0.4);
+            }
+
+            /* Footer */
+            .about-footer {
+                background: #050810;
+                padding: 40px 24px;
+                text-align: center;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .about-footer p {
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.875rem;
+                margin-bottom: 8px;
+            }
+
+            .about-footer a {
+                color: #f97316;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+            .about-footer a:hover {
+                color: #fb923c;
+            }
+        </style>
     </head>
     <body>
         <script>
@@ -64,78 +498,198 @@
         </script>
 
         <!-- Hero Section -->
-        <section class="hero">
-            <h1>About PM4Subs</h1>
-            <p>
-                Built by a subcontractor who just wanted software that actually
-                works.
+        <section class="about-hero">
+            <span class="eyebrow">Our Story</span>
+            <h1>
+                Built by <span class="highlight">Subcontractors</span>,<br />for
+                Subcontractors
+            </h1>
+            <p class="subtitle">
+                Software that actually works, from someone who's been in the
+                field.
             </p>
         </section>
 
-        <!-- Story Section -->
-        <section class="section">
-            <div class="container">
-                <div class="card mb-4">
-                    <h2>Why I Started PM4Subs</h2>
-                    <p>
-                        After years of running masonry crews and juggling RFIs,
-                        photos, change orders, and estimates across emails and
-                        texts, I realized something: subcontractors don't have
-                        simple tools that fit the way we work.
-                    </p>
-                    <p class="mt-2">
-                        Everything on the market was too expensive, too slow, or
-                        designed by people who have never stepped onto a
-                        jobsite. So I started building small tools for my own
-                        company - quick header calculators, proposal helpers,
-                        and ways to stay organized.
-                    </p>
-                </div>
-
-                <div class="card mb-4">
-                    <h2>Building Tools That Make Sense</h2>
-                    <p class="mb-2">
-                        PM4Subs exists because subcontractors deserve software
-                        that is:
-                    </p>
-                    <ul class="about-list">
-                        <li>Simple</li>
-                        <li>Affordable</li>
-                        <li>Fast</li>
-                        <li>Built around field work</li>
-                    </ul>
-                    <p class="mt-2">
-                        No complexity. No enterprise junk. Just tools that get
-                        the job done.
+        <!-- Founder Story Section -->
+        <section class="story-section">
+            <div class="story-container">
+                <!-- Founder Card -->
+                <div class="founder-card">
+                    <div class="founder-header">
+                        <div class="founder-avatar">👷</div>
+                        <div class="founder-info">
+                            <h3>The Founder</h3>
+                            <span>Former Masonry Contractor</span>
+                        </div>
+                    </div>
+                    <p class="founder-quote">
+                        "After years of running crews and drowning in emails,
+                        texts, and spreadsheets, I realized something: there's
+                        no software built for how we actually work. Everything
+                        is too expensive, too complicated, or made by people
+                        who've never set foot on a jobsite. So I started
+                        building my own tools."
                     </p>
                 </div>
 
-                <div class="card">
-                    <h2>By Subs, For Subs</h2>
-                    <p>
-                        Everything on this platform is built with real-world
-                        experience - from header rentals to spec analysis to
-                        tool tracking. If it doesn't save time on the job, it
-                        doesn't go in the product.
-                    </p>
+                <!-- Story Cards -->
+                <div class="story-card">
+                    <div class="story-card-header">
+                        <div class="story-card-icon">🔧</div>
+                        <span class="story-card-title"
+                            >Why I Started PM4Subs</span
+                        >
+                    </div>
+                    <div class="story-card-body">
+                        <p>
+                            Running a masonry crew means juggling RFIs, photos,
+                            change orders, and estimates across a dozen
+                            different apps, emails, and text threads. I got
+                            tired of losing track of things that cost me money.
+                        </p>
+                        <p>
+                            So I started building small tools for my own company
+                            - quick header calculators, proposal helpers, and
+                            ways to stay organized. They worked. Then other subs
+                            started asking for them.
+                        </p>
+                    </div>
                 </div>
 
-                <p class="text-muted text-center mt-4">
-                    Thanks for being part of the journey.
+                <div class="story-card">
+                    <div class="story-card-header">
+                        <div class="story-card-icon">💡</div>
+                        <span class="story-card-title">What We Believe In</span>
+                    </div>
+                    <div class="story-card-body">
+                        <p>
+                            PM4Subs exists because subcontractors deserve
+                            software that is:
+                        </p>
+                        <div class="values-grid">
+                            <div class="value-item">
+                                <span class="icon">⚡</span>
+                                <span>Simple</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="icon">💰</span>
+                                <span>Affordable</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="icon">🚀</span>
+                                <span>Fast</span>
+                            </div>
+                            <div class="value-item">
+                                <span class="icon">🏗️</span>
+                                <span>Built for the field</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="story-card">
+                    <div class="story-card-header">
+                        <div class="story-card-icon">🎯</div>
+                        <span class="story-card-title">By Subs, For Subs</span>
+                    </div>
+                    <div class="story-card-body">
+                        <p>
+                            Everything on this platform is built with real-world
+                            experience - from header rentals to spec analysis to
+                            tool tracking. If it doesn't save time on the job,
+                            it doesn't go in the product.
+                        </p>
+                        <p>
+                            No complexity. No enterprise bloat. No features
+                            you'll never use. Just tools that get the job done
+                            so you can get back to yours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="mission-container">
+                <h2 class="mission-title">
+                    Our <span class="highlight">Guiding Principles</span>
+                </h2>
+                <p class="mission-text">
+                    Every feature we build, every tool we create - it all comes
+                    back to one question: "Would this actually help someone on a
+                    jobsite?"
                 </p>
+
+                <div class="principles-grid">
+                    <div class="principle-card">
+                        <div class="principle-icon">🎯</div>
+                        <h4>Simplicity First</h4>
+                        <p>
+                            If it takes more than a few taps, we've failed.
+                            Every screen should be obvious.
+                        </p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">💸</div>
+                        <h4>Fair Pricing</h4>
+                        <p>
+                            Small subs shouldn't pay enterprise prices. Our
+                            tools stay affordable.
+                        </p>
+                    </div>
+                    <div class="principle-card">
+                        <div class="principle-icon">🛠️</div>
+                        <h4>Field-Tested</h4>
+                        <p>
+                            Every feature is tested in real conditions. We use
+                            what we build.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Thanks Section -->
+        <section class="thanks-section">
+            <div class="thanks-message">
+                <p>Thanks for being part of the journey.</p>
+                <p class="signature">- The PM4Subs Team</p>
             </div>
         </section>
 
         <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Try PM4Subs?</h2>
-                <p>Join subcontractors who are building better workflows</p>
-                <button class="btn-primary btn-lg" onclick="showEmailModal()">
-                    Get Early Access
-                </button>
-            </div>
+        <section class="about-cta">
+            <h2>Ready to Try PM4Subs?</h2>
+            <p>Join subcontractors who are building better workflows</p>
+            <button class="cta-button" onclick="showEmailModal()">
+                Get Early Access
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
         </section>
+
+        <!-- Footer -->
+        <footer class="about-footer">
+            <p>
+                &copy; 2025 PM4Subs. All rights reserved. |
+                <a href="/privacy/">Privacy Policy</a>
+            </p>
+            <p>
+                Questions?
+                <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
+            </p>
+        </footer>
 
         <!-- Modal -->
         <div
@@ -197,20 +751,6 @@
                 </form>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <p>
-                    &copy; 2025 PM4Subs. All rights reserved. |
-                    <a href="/privacy/">Privacy Policy</a>
-                </p>
-                <p class="mt-2">
-                    Questions?
-                    <a href="mailto:hello@pm4subs.com">hello@pm4subs.com</a>
-                </p>
-            </div>
-        </footer>
 
         <script>
             function showEmailModal() {
@@ -287,6 +827,35 @@
                     submitBtn.disabled = false;
                 }
             }
+
+            // Scroll reveal animation
+            function initScrollReveal() {
+                const revealElements = document.querySelectorAll(
+                    ".story-card, .principle-card",
+                );
+
+                const observer = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry, index) => {
+                            if (entry.isIntersecting) {
+                                const delay = index * 100;
+                                setTimeout(() => {
+                                    entry.target.classList.add("revealed");
+                                }, delay % 400);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    {
+                        threshold: 0.1,
+                        rootMargin: "0px 0px -50px 0px",
+                    },
+                );
+
+                revealElements.forEach((el) => observer.observe(el));
+            }
+
+            document.addEventListener("DOMContentLoaded", initScrollReveal);
         </script>
     </body>
 </html>
