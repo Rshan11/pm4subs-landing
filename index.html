@@ -68,6 +68,13 @@
         <!-- Design System -->
         <link rel="stylesheet" href="design-system.css" />
 
+        <!-- Cloudflare Turnstile -->
+        <script
+            src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async
+            defer
+        ></script>
+
         <!-- Shared Header -->
         <script src="shared-header.js"></script>
 
@@ -979,6 +986,11 @@
                             placeholder="Your Company"
                         />
                     </div>
+                    <div
+                        class="cf-turnstile"
+                        data-sitekey="0x4AAAAAACL5Y0yML1b9e4Bc"
+                        data-theme="dark"
+                    ></div>
                     <button type="submit" class="btn-primary w-full">
                         Request Access
                     </button>
@@ -1069,6 +1081,16 @@
                 const name = document.getElementById("name").value;
                 const email = document.getElementById("email").value;
                 const company = document.getElementById("company").value;
+                const turnstileResponse = document.querySelector(
+                    '[name="cf-turnstile-response"]',
+                )?.value;
+
+                if (!turnstileResponse) {
+                    alert("Please complete the security check.");
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    return;
+                }
 
                 try {
                     const response = await fetch(
@@ -1086,6 +1108,7 @@
                                 email,
                                 company,
                                 source: "PM4Subs Landing Page",
+                                turnstileToken: turnstileResponse,
                             }),
                         },
                     );
