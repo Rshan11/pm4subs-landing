@@ -1,4 +1,6 @@
+# PM4Subs Robots.txt
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://pm4subs.com/sitemap.xml

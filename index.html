@@ -3,6 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- Preconnect for performance -->
+        <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+        <link rel="preconnect" href="https://challenges.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
+        <link rel="dns-prefetch" href="https://challenges.cloudflare.com" />
+
         <title>PM4Subs – Project Management Software for Subcontractors</title>
         <meta
             name="description"
@@ -238,11 +245,16 @@
         <div class="hero-wrapper">
             <section class="hero">
                 <div class="hero-text">
+                    <!-- SEO H1 - visually hidden but read by search engines -->
+                    <h1 class="sr-only">
+                        Project Management Software for Subcontractors - PM4Subs
+                    </h1>
+
                     <div class="eyebrow">Built by a subcontractor</div>
-                    <h1 class="hero-title">
+                    <p class="hero-title" role="heading" aria-level="2">
                         Stop fielding texts
                         <span class="highlight">while you're driving.</span>
-                    </h1>
+                    </p>
                     <p class="hero-subtitle">
                         Every question has the same answer:
                         <strong>"It's in PM4Subs."</strong>
@@ -693,6 +705,7 @@
                         <div class="screenshot-card">
                             <img
                                 src="screenshots/mobile-command-center.webp"
+                                loading="lazy"
                                 alt="Mobile dashboard with camera button"
                             />
                             <div class="screenshot-caption">
@@ -709,6 +722,7 @@
                         <div class="screenshot-card">
                             <img
                                 src="screenshots/projects-dashboard.webp"
+                                loading="lazy"
                                 alt="Active jobs dashboard"
                             />
                             <div class="screenshot-caption">
@@ -723,6 +737,7 @@
                         <div class="screenshot-card">
                             <img
                                 src="screenshots/photo-gallery.webp"
+                                loading="lazy"
                                 alt="Photo gallery with filters"
                             />
                             <div class="screenshot-caption">
@@ -737,6 +752,7 @@
                         <div class="screenshot-card">
                             <img
                                 src="screenshots/proposal-dashboard.webp"
+                                loading="lazy"
                                 alt="Proposals organized by status"
                             />
                             <div class="screenshot-caption">
@@ -751,6 +767,7 @@
                         <div class="screenshot-card">
                             <img
                                 src="screenshots/command-center.webp"
+                                loading="lazy"
                                 alt="Command center with issue alerts"
                             />
                             <div class="screenshot-caption">
