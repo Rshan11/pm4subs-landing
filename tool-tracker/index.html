@@ -67,6 +67,37 @@
             defer
         ></script>
 
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "PM4Subs Tool Tracker",
+                "description": "Simple check-in/check-out system for construction tools, equipment, and jobsite assets. Reduce tool loss and keep your crew accountable.",
+                "url": "https://pm4subs.com/tool-tracker/",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/PreOrder"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "PM4Subs",
+                    "url": "https://pm4subs.com/"
+                },
+                "featureList": [
+                    "Tool check-in/check-out",
+                    "Location history tracking",
+                    "Crew assignment",
+                    "Equipment inventory",
+                    "Loss prevention"
+                ]
+            }
+        </script>
+
         <!-- Shared Header -->
         <script src="../shared-header.js"></script>
     </head>

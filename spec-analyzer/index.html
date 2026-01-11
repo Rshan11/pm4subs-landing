@@ -67,6 +67,37 @@
             defer
         ></script>
 
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "PM4Subs Spec Analyzer",
+                "description": "AI-powered construction spec analyzer that extracts Division 00, 01, 04, and 07 requirements from PDF spec books in minutes. Built for masonry, concrete, and other subcontractors.",
+                "url": "https://pm4subs.com/spec-analyzer/",
+                "applicationCategory": "BusinessApplication",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "publisher": {
+                    "@type": "Organization",
+                    "name": "PM4Subs",
+                    "url": "https://pm4subs.com/"
+                },
+                "featureList": [
+                    "PDF spec book upload",
+                    "Division 00, 01, 04, 07 extraction",
+                    "Submittal requirement identification",
+                    "Material specification parsing",
+                    "AI-powered analysis"
+                ]
+            }
+        </script>
+
         <!-- Shared Header -->
         <script src="../shared-header.js"></script>
     </head>
@@ -88,41 +119,448 @@
             </a>
         </section>
 
-        <!-- Features Section -->
-        <section class="section">
+        <!-- How It Works Section -->
+        <section class="section" style="background: #0c1220">
             <div class="container">
-                <div class="feature-grid">
-                    <div class="card">
-                        <h2>PDF Spec Analysis in Minutes</h2>
-                        <p>
-                            Upload any spec PDF and instantly pull out
-                            materials, accessories, submittal requirements,
-                            scope notes, and proposal-ready summaries. The
-                            analyzer understands masonry, concrete, roofing,
-                            waterproofing, and other subcontractor divisions.
+                <h2 class="section-title" style="color: #fff">
+                    How It <span style="color: #f97316">Works</span>
+                </h2>
+                <p
+                    style="
+                        text-align: center;
+                        color: rgba(255, 255, 255, 0.7);
+                        max-width: 600px;
+                        margin: 0 auto 48px;
+                    "
+                >
+                    Go from a 2,000-page spec book to your trade-specific
+                    requirements in minutes.
+                </p>
+
+                <div class="grid-3" style="max-width: 1000px; margin: 0 auto">
+                    <div style="text-align: center; padding: 24px">
+                        <div
+                            style="
+                                width: 64px;
+                                height: 64px;
+                                background: rgba(249, 115, 22, 0.15);
+                                border-radius: 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                font-size: 1.75rem;
+                            "
+                        >
+                            1
+                        </div>
+                        <h3 style="color: #fff; margin-bottom: 12px">
+                            Upload Your Spec PDF
+                        </h3>
+                        <p
+                            style="
+                                color: rgba(255, 255, 255, 0.6);
+                                font-size: 0.938rem;
+                                line-height: 1.6;
+                            "
+                        >
+                            Drag and drop any spec book - 100 pages or 3,000
+                            pages. The analyzer handles it all.
                         </p>
                     </div>
 
-                    <div class="card">
-                        <h2>Fast, Accurate Results</h2>
-                        <p>
-                            PM4Subs uses automated text extraction to identify
-                            critical requirements that affect bidding, planning,
-                            and submittals. No more missing a flashing note or
-                            cleaning requirement buried on page 147.
+                    <div style="text-align: center; padding: 24px">
+                        <div
+                            style="
+                                width: 64px;
+                                height: 64px;
+                                background: rgba(249, 115, 22, 0.15);
+                                border-radius: 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                font-size: 1.75rem;
+                            "
+                        >
+                            2
+                        </div>
+                        <h3 style="color: #fff; margin-bottom: 12px">
+                            Select Your Divisions
+                        </h3>
+                        <p
+                            style="
+                                color: rgba(255, 255, 255, 0.6);
+                                font-size: 0.938rem;
+                                line-height: 1.6;
+                            "
+                        >
+                            Choose which CSI divisions matter for your trade: 04
+                            Masonry, 07 Waterproofing, 00/01 General, and more.
                         </p>
                     </div>
 
-                    <div class="card">
-                        <h2>Built by a Subcontractor</h2>
-                        <p>
-                            I built this tool after years of spending hours
-                            searching spec books manually. Subs work too hard to
-                            waste time on bad systems. This analyzer is designed
-                            to help you win more work and avoid mistakes.
+                    <div style="text-align: center; padding: 24px">
+                        <div
+                            style="
+                                width: 64px;
+                                height: 64px;
+                                background: rgba(249, 115, 22, 0.15);
+                                border-radius: 16px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                margin: 0 auto 20px;
+                                font-size: 1.75rem;
+                            "
+                        >
+                            3
+                        </div>
+                        <h3 style="color: #fff; margin-bottom: 12px">
+                            Get Your Scope
+                        </h3>
+                        <p
+                            style="
+                                color: rgba(255, 255, 255, 0.6);
+                                font-size: 0.938rem;
+                                line-height: 1.6;
+                            "
+                        >
+                            Receive extracted sections, submittal requirements,
+                            materials, and scope notes - ready for bidding.
                         </p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" style="background: #080d16">
+            <div class="container">
+                <h2 class="section-title" style="color: #fff">
+                    What You <span style="color: #f97316">Get</span>
+                </h2>
+
+                <div class="feature-grid">
+                    <div
+                        class="card"
+                        style="
+                            background: #1e293b;
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                        "
+                    >
+                        <h3 style="color: #fff">Trade-Specific Extraction</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7)">
+                            Pull out just Division 04 (Masonry), Division 07
+                            (Waterproofing), or any combination. No more
+                            scrolling through electrical specs to find your
+                            scope.
+                        </p>
+                    </div>
+
+                    <div
+                        class="card"
+                        style="
+                            background: #1e293b;
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                        "
+                    >
+                        <h3 style="color: #fff">Submittal Checklists</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7)">
+                            Automatically identifies what you need to submit -
+                            product data, samples, mockups, certifications.
+                            Never miss a submittal requirement again.
+                        </p>
+                    </div>
+
+                    <div
+                        class="card"
+                        style="
+                            background: #1e293b;
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                        "
+                    >
+                        <h3 style="color: #fff">Material & Product Specs</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7)">
+                            Extracts specified products, approved manufacturers,
+                            and material requirements so you know exactly what
+                            to quote.
+                        </p>
+                    </div>
+
+                    <div
+                        class="card"
+                        style="
+                            background: #1e293b;
+                            border: 1px solid rgba(255, 255, 255, 0.08);
+                        "
+                    >
+                        <h3 style="color: #fff">Scope Notes & Exclusions</h3>
+                        <p style="color: rgba(255, 255, 255, 0.7)">
+                            Catches the details that affect your bid - cleaning
+                            requirements, protection, testing, and items often
+                            buried deep in the specs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="section" style="background: #0c1220">
+            <div class="container">
+                <div
+                    style="max-width: 800px; margin: 0 auto; text-align: center"
+                >
+                    <h2
+                        style="
+                            color: #fff;
+                            font-size: clamp(1.5rem, 3vw, 2rem);
+                            margin-bottom: 24px;
+                        "
+                    >
+                        The Problem With
+                        <span style="color: #f97316"
+                            >Traditional Spec Review</span
+                        >
+                    </h2>
+                    <p
+                        style="
+                            color: rgba(255, 255, 255, 0.7);
+                            font-size: 1.0625rem;
+                            line-height: 1.8;
+                            margin-bottom: 32px;
+                        "
+                    >
+                        A typical commercial spec book is 1,500-3,000 pages. As
+                        a subcontractor, maybe 50-100 of those pages actually
+                        matter for your trade. But finding those pages means
+                        scrolling, searching, and hoping you don't miss the one
+                        paragraph that affects your entire bid.
+                    </p>
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: repeat(
+                                auto-fit,
+                                minmax(200px, 1fr)
+                            );
+                            gap: 24px;
+                            text-align: left;
+                        "
+                    >
+                        <div
+                            style="
+                                background: rgba(239, 68, 68, 0.1);
+                                border: 1px solid rgba(239, 68, 68, 0.2);
+                                border-radius: 12px;
+                                padding: 20px;
+                            "
+                        >
+                            <div
+                                style="
+                                    color: #ef4444;
+                                    font-weight: 600;
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                2-3 Hours
+                            </div>
+                            <div
+                                style="
+                                    color: rgba(255, 255, 255, 0.6);
+                                    font-size: 0.875rem;
+                                "
+                            >
+                                Average time to manually review a spec book
+                            </div>
+                        </div>
+                        <div
+                            style="
+                                background: rgba(239, 68, 68, 0.1);
+                                border: 1px solid rgba(239, 68, 68, 0.2);
+                                border-radius: 12px;
+                                padding: 20px;
+                            "
+                        >
+                            <div
+                                style="
+                                    color: #ef4444;
+                                    font-weight: 600;
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                Missed Scope
+                            </div>
+                            <div
+                                style="
+                                    color: rgba(255, 255, 255, 0.6);
+                                    font-size: 0.875rem;
+                                "
+                            >
+                                Easy to skip a critical note buried on page 847
+                            </div>
+                        </div>
+                        <div
+                            style="
+                                background: rgba(239, 68, 68, 0.1);
+                                border: 1px solid rgba(239, 68, 68, 0.2);
+                                border-radius: 12px;
+                                padding: 20px;
+                            "
+                        >
+                            <div
+                                style="
+                                    color: #ef4444;
+                                    font-weight: 600;
+                                    margin-bottom: 8px;
+                                "
+                            >
+                                Lost Bids
+                            </div>
+                            <div
+                                style="
+                                    color: rgba(255, 255, 255, 0.6);
+                                    font-size: 0.875rem;
+                                "
+                            >
+                                Too many bids to review = opportunities passed
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial/Quote Section -->
+        <section class="section" style="background: #080d16">
+            <div class="container">
+                <div
+                    style="
+                        max-width: 700px;
+                        margin: 0 auto;
+                        background: linear-gradient(
+                            135deg,
+                            #1e293b 0%,
+                            #0f172a 100%
+                        );
+                        border: 1px solid rgba(249, 115, 22, 0.2);
+                        border-radius: 20px;
+                        padding: 40px;
+                        position: relative;
+                    "
+                >
+                    <div
+                        style="
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            height: 4px;
+                            background: linear-gradient(
+                                90deg,
+                                #f97316,
+                                #fb923c
+                            );
+                            border-radius: 20px 20px 0 0;
+                        "
+                    ></div>
+                    <div
+                        style="
+                            font-size: 3rem;
+                            color: #f97316;
+                            line-height: 1;
+                            margin-bottom: 16px;
+                        "
+                    >
+                        "
+                    </div>
+                    <p
+                        style="
+                            color: rgba(255, 255, 255, 0.9);
+                            font-size: 1.125rem;
+                            line-height: 1.8;
+                            font-style: italic;
+                            margin-bottom: 24px;
+                        "
+                    >
+                        I built the Spec Analyzer after spending years manually
+                        searching through spec books. You get a 2,400-page PDF
+                        at 4pm and the bid is due the next morning. There had to
+                        be a better way. Now there is.
+                    </p>
+                    <div style="display: flex; align-items: center; gap: 16px">
+                        <div
+                            style="
+                                width: 48px;
+                                height: 48px;
+                                background: linear-gradient(
+                                    135deg,
+                                    #f97316,
+                                    #ea580c
+                                );
+                                border-radius: 12px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 1.25rem;
+                            "
+                        >
+                            👷
+                        </div>
+                        <div>
+                            <div style="color: #fff; font-weight: 600">
+                                Ryan Shanley
+                            </div>
+                            <div
+                                style="
+                                    color: rgba(255, 255, 255, 0.5);
+                                    font-size: 0.875rem;
+                                "
+                            >
+                                Founder, PM4Subs | Masonry Contractor
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn More Section -->
+        <section class="section" style="background: #0c1220">
+            <div class="container" style="text-align: center">
+                <h2 style="color: #fff; margin-bottom: 16px">
+                    Want to Learn More?
+                </h2>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 24px">
+                    Read our guide on reading construction specs faster - with
+                    or without the analyzer.
+                </p>
+                <a
+                    href="/blog/how-to-read-construction-specs-faster/"
+                    style="
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        color: #f97316;
+                        font-weight: 500;
+                        text-decoration: none;
+                    "
+                >
+                    How to Read Construction Specs Faster
+                    <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
             </div>
         </section>
 
