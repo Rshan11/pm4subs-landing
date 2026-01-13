@@ -791,17 +791,23 @@ body {
     line-height: 1.4;
 }
 
+.message.estimator,
 .message.solution {
     background: linear-gradient(135deg, #2563a8 0%, #1e5a99 100%);
-    max-width: 360px;
-    margin-left: 0;
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.message.solution {
+    max-width: 360px;
+    margin-left: 0;
+}
+
+.message.estimator .sender,
 .message.solution .sender {
     color: rgba(255, 255, 255, 0.7);
 }
 
+.message.estimator .text,
 .message.solution .text {
     color: #fff;
     font-weight: 500;
