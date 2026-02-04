@@ -52,6 +52,7 @@ function initHeader() {
 
             <span class="nav-section-title">Legal</span>
             <a href="/privacy/">Privacy Policy</a>
+            <a href="/terms/">Terms of Service</a>
         </nav>
         <div class="side-panel-cta">
             <button class="btn-primary" onclick="showEmailModal(); closeSidePanel();">
